@@ -45,11 +45,12 @@ h2{
 	color: var(--contraste1);
 }
 
-/*************************** Mise en forme du pied de page *****************************/
-
-footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em
+button{
+	font-family: 'Syne';
+	font-size: 16px;
+	color: var(--contraste1);
+	padding: 10px 20px;
+	background-color: transparent;
+	border: 1px solid var(--contraste1);
+	border-radius: 60px;
 }
-

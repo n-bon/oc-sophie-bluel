@@ -1,5 +1,7 @@
 
 /**************** Mise en forme du corpus de la page ****************/
+
+/************ Bannière **********/
 #introduction {
 	display: flex;
 	align-items: center;
@@ -23,9 +25,24 @@
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+/********* Section portfolio ************/
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+.filtres {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 50px;
+}
+
+.filtreActif {
+	background-color: var(--contraste1);
+	color: var(--fond);
 }
 .gallery {
 	width: 100%;
@@ -39,6 +56,8 @@
 	width: 100%;
 
 }
+
+/********* Section contact ************/
 #contact {
 	width: 50%;
 margin: auto;
