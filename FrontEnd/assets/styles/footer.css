@@ -1,0 +1,8 @@
+/*************************** Mise en forme du pied de page *****************************/
+
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
+

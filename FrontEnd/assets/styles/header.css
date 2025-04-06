@@ -1,0 +1,15 @@
+/***************** Mise en forme du menu en-tête de la page *************************/
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+
+}
+nav li {
+	padding: 0 10px;
+	font-size: 1.2em;
+}
+
+li:hover {
+	color: var(--contraste2);
+}
