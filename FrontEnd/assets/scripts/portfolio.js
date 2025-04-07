@@ -67,15 +67,11 @@ export async function modifierPortfolioFiltres (tousTravaux) {
     const sectionBoutonsFiltres = document.querySelector(".filtres");
     const boutons = sectionBoutonsFiltres.querySelectorAll("button");
 
-    //Création de la variable utilisée pour le filtrage 
-    let listeFiltree = [];
-
     //Écouter l'événement clic
     boutons.forEach((bouton) => {
         bouton.addEventListener("click", () => {
             //Effacer classe selectionnee sur les autres boutons
             effacerSelectionFiltres(boutons);
-
             //Ajouter la classe sur le bouton
             bouton.className= "filtreActif";
 
@@ -84,7 +80,7 @@ export async function modifierPortfolioFiltres (tousTravaux) {
                 afficherTravaux(tousTravaux);
             } else {
                 //Filtrage dynamique de la liste
-                listeFiltree = tousTravaux.filter(travail => {
+                let listeFiltree = tousTravaux.filter(travail => {
                     return travail.category.name === bouton.innerText;
                 });
                 //Appel de la fonction Afficher Travaux avec la nouvelle liste
@@ -92,5 +88,4 @@ export async function modifierPortfolioFiltres (tousTravaux) {
             };
         });
     });
-
 };
