@@ -37,7 +37,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 10px;
-	margin-bottom: 50px;
+	margin-bottom: var(--espaceDefaut);
 }
 
 .filtreActif {
@@ -56,39 +56,28 @@
 	width: 100%;
 
 }
+/******************************** Formulaires *******************************/
+/* Communs à tous les formulaires */
 
-/********* Section contact ************/
-#contact {
-	width: 50%;
-margin: auto;
-}
-#contact > * {
-	text-align: center;
-
-}
-#contact h2{
-	margin-bottom: 20px;
-}
-#contact form {
-	text-align: left;
-	margin-top:30px;
+#contact form,
+.formulaire-connexion form {
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
-	height: 50px;
+#contact input,
+.formulaire-connexion input {
+	height: var(--espaceDefaut);
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px var(--soutienOmbre);
 }
-#contact label {
+
+#contact label,
+.formulaire-connexion label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea {
-	border: none;
-	box-shadow: 0px 4px 14px var(--soutienOmbre);
-}
+
 
 input[type="submit"]{
 	font-family: 'Syne';
@@ -99,4 +88,57 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+}
+
+
+/********* Section contact ************/
+#contact {
+	width: 50%;
+margin: auto;
+}
+
+#contact > * {
+	text-align: center;
+
+}
+
+#contact h2{
+	margin-bottom: 20px;
+}
+
+#contact form {
+	text-align: left;
+	margin-top:30px;
+}
+
+#contact label {
+	margin: 2em 0 1em 0;
+}
+
+#contact textarea {
+	border: none;
+	box-shadow: 0px 4px 14px var(--soutienOmbre);
+}
+
+/******** Section connexion sur page dédiée *********/
+
+.formulaire-connexion {
+	max-width: 380px;
+	margin: 130px auto 0px auto;
+	min-height: 72vh;
+}
+
+.formulaire-connexion h2 {
+	text-align: center;
+}
+
+.formulaire-connexion a {
+	display: block;
+	margin-top: 7px;
+	text-align: center;
+	color: var(--soutien1);
+}
+
+.formulaire-connexion [type="submit"]{
+	margin : 2em auto 1em auto ;
 }

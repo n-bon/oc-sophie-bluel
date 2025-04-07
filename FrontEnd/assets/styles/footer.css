@@ -1,8 +1,21 @@
 /*************************** Mise en forme du pied de page *****************************/
-
-footer nav ul {
+footer {
+	height: 60px;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: white;
+	object-fit: cover;
 	display: flex;
-	justify-content: flex-end;
-	margin: 2em
+	align-content: center;
 }
+
+footer nav {
+	max-width: var(--largeurMaxOrdi);
+	width: 100%;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
 
