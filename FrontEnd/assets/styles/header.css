@@ -5,7 +5,7 @@ header {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	margin: 50px auto;
+	margin: var(--espaceDefaut) auto;
 }
 
 nav ul {

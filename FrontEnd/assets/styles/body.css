@@ -37,7 +37,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 10px;
-	margin-bottom: 50px;
+	margin-bottom: var(--espaceDefaut);
 }
 
 .filtreActif {
@@ -77,7 +77,7 @@ margin: auto;
 }
 
 #contact input {
-	height: 50px;
+	height: var(--espaceDefaut);
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px var(--soutienOmbre);

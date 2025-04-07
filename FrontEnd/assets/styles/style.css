@@ -1,11 +1,15 @@
 
 /*************************** Général *********************************/
 :root {
+	/** Variables, infos redondantes dans le projet **/
+	/* Couleurs */
 	--fond: #FFFEF8;
 	--contraste1: #1D6154;
 	--contraste2: #B1663C;
 	--soutienOmbre: rgba(0, 0, 0, 0.09);
+	/* Espacements */
 	--largeurMaxOrdi: 1140px;
+	--espaceDefaut: 50px;
 }
 
 body {
@@ -20,7 +24,7 @@ main {
 }
 
 section {
-	margin: 50px 0;
+	margin: var(--espaceDefaut) 0;
 }
 
 h1{
