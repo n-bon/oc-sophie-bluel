@@ -1,7 +1,10 @@
 
 /***************** Import des modules ********************************/
 //Programmes spécifiques à la section portfolio
-import { afficherTravaux, afficherBoutonsFiltres } from './portfolio.js';
+import { afficherTravaux, 
+    afficherBoutonsFiltres,
+    modifierPortfolioFiltres
+ } from './portfolio.js';
 
 /******************** Chargement des ressources **********************/
 //Charger et convertir la liste des travaux
@@ -18,40 +21,5 @@ afficherTravaux(travaux);
 afficherBoutonsFiltres(categories);
 
 /********** Modification dynamique du portfolio avec les filtres ********************/
-
-//Déselectionner les autres filtres
-async function effacerSelectionFiltres (listeBoutons) {
-    listeBoutons.forEach((bouton) => {
-        if (bouton.className === "filtreActif") {
-            bouton.className = "";
-        };
-    });
-}
-
-
-
-async function modifierPortfolioFiltres (tousTravaux) {
-    /******************Initialisation*********/
-    // Selection des objets HTML
-    const sectionBoutonsFiltres = document.querySelector(".filtres");
-    const boutons = sectionBoutonsFiltres.querySelectorAll("button");
-
-    //Création de la variable utilisée pour le filtrage 
-    let listeFiltree = [];
-
-    //Écouter l'événement clic
-    boutons.forEach((bouton) => {
-        bouton.addEventListener("click", (clic) => {
-            //Effacer classe selectionnee sur les autres boutons
-            effacerSelectionFiltres(boutons);
-            //Ajouter la classe sur le bouton
-            bouton.className= "filtreActif";
-            //Creation de la nouvelle liste filtrée
-
-            //Appel de la fonction Afficher Travaux avec la nouvelle liste
-        });
-    });
-
-};
 
 modifierPortfolioFiltres(travaux);
