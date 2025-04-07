@@ -28,3 +28,21 @@ export async function afficherTravaux(travaux) {
         emplacementPortfolio.appendChild(figureTravail);
     }
 }
+
+/******************* Boucle d'affichage des filtres dynamiques ***************/
+
+export async function afficherBoutonsFiltres(filtres) {
+    // Selection du div qui accueille les filtres dynamiques
+    const emplacementFiltres = document.querySelector(".filtres");
+
+    //Boucle de création des boutons
+    filtres.forEach((filtre) => {
+        //Création du bouton
+        let boutonFiltre = document.createElement("button");
+        //Remplissage avec le contenu de l'API
+        boutonFiltre.innerText = filtre.name;
+        //Affichage dans l'UI
+        emplacementFiltres.appendChild(boutonFiltre);
+    });
+};
+
