@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="./assets/styles/header.css">
 	<link rel="stylesheet" href="./assets/styles/body.css">
 	<link rel="stylesheet" href="./assets/styles/footer.css">
+    <!--Lier le fichier scipt-->
+    <script type="module" src="./assets/scripts/login.js" defer></script>
 </head>
 <body>
     <header>
@@ -30,9 +32,9 @@
 		</nav>
 	</header>
     <main>
-        <section class="formulaire-connexion">
+        <section class="connexion">
             <h2>Log In</h2>
-            <form action="#" method="post">
+            <form action="#" method="post" id="formulaire-connexion">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email">
                 <label for="mdp">Mot de passe</label>

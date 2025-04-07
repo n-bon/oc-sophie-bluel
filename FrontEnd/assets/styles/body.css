@@ -60,13 +60,13 @@
 /* Communs à tous les formulaires */
 
 #contact form,
-.formulaire-connexion form {
+.connexion form {
 	display: flex;
 	flex-direction: column;
 }
 
 #contact input,
-.formulaire-connexion input {
+.connexion input {
 	height: var(--espaceDefaut);
 	font-size: 1.2em;
 	border: none;
@@ -74,7 +74,7 @@
 }
 
 #contact label,
-.formulaire-connexion label {
+.connexion label {
 	margin: 2em 0 1em 0;
 }
 
@@ -122,23 +122,23 @@ margin: auto;
 
 /******** Section connexion sur page dédiée *********/
 
-.formulaire-connexion {
+.connexion {
 	max-width: 380px;
 	margin: 130px auto 0px auto;
 	min-height: 72vh;
 }
 
-.formulaire-connexion h2 {
+.connexion h2 {
 	text-align: center;
 }
 
-.formulaire-connexion a {
+.connexion a {
 	display: block;
 	margin-top: 7px;
 	text-align: center;
 	color: var(--soutien1);
 }
 
-.formulaire-connexion [type="submit"]{
+.connexion [type="submit"]{
 	margin : 2em auto 1em auto ;
 }
