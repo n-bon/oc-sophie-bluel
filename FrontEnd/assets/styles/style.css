@@ -5,7 +5,7 @@
 	--contraste1: #1D6154;
 	--contraste2: #B1663C;
 	--soutienOmbre: rgba(0, 0, 0, 0.09);
-	--maxWidthDesktop: 1140px;
+	--largeurMaxOrdi: 1140px;
 }
 
 body {
@@ -15,7 +15,7 @@ body {
 }
 
 main {
-	max-width: var(--maxWidthDesktop);
+	max-width: var(--largeurMaxOrdi);
 	margin: auto;
 }
 

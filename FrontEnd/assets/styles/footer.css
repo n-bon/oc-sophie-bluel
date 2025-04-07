@@ -10,7 +10,7 @@ footer {
 }
 
 footer nav {
-	max-width: var(--maxWidthDesktop);
+	max-width: var(--largeurMaxOrdi);
 	width: 100%;
 	margin: auto;
 	display: flex;

@@ -1,7 +1,7 @@
 /***************** Mise en forme du menu en-tête de la page *************************/
 
 header {
-	max-width: var(--maxWidthDesktop);
+	max-width: var(--largeurMaxOrdi);
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
