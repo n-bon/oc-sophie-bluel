@@ -5,19 +5,20 @@
 	--contraste1: #1D6154;
 	--contraste2: #B1663C;
 	--soutienOmbre: rgba(0, 0, 0, 0.09);
+	--maxWidthDesktop: 1140px;
 }
 
 body {
-	max-width: 1140px;
-	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: var(--fond);
 }
-header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0;
+
+main {
+	max-width: var(--maxWidthDesktop);
+	margin: auto;
 }
+
 section {
 	margin: 50px 0;
 }
