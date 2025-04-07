@@ -60,7 +60,7 @@ async function effacerSelectionFiltres (listeBoutons) {
     });
 }
 
-//Filtrer la liste des travaux à afficher en fonctiondu bouton sélectionné
+//Filtrer la liste des travaux à afficher en fonction du bouton sélectionné
 export async function modifierPortfolioFiltres (tousTravaux) {
     /******************Initialisation*********/
     // Selection des objets HTML
