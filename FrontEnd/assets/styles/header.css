@@ -25,6 +25,12 @@ nav a {
 	text-decoration: none;
 }
 
+nav img {
+	display: block;
+	height: 22px;
+	width: 22px;
+}
+
 li:hover,
 nav a:hover {
 	color: var(--contraste2);
