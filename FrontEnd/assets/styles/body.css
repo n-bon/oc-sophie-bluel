@@ -124,8 +124,8 @@ margin: auto;
 
 .formulaire-connexion {
 	max-width: 380px;
-	margin: 100px auto 0px auto;
-	min-height: 75vh;
+	margin: 130px auto 0px auto;
+	min-height: 72vh;
 }
 
 .formulaire-connexion h2 {
@@ -133,6 +133,12 @@ margin: auto;
 }
 
 .formulaire-connexion a {
+	display: block;
+	margin-top: 7px;
 	text-align: center;
 	color: var(--soutien1);
+}
+
+.formulaire-connexion [type="submit"]{
+	margin : 2em auto 1em auto ;
 }
