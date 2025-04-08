@@ -58,6 +58,16 @@
 	display: none;
 }
 
+.bouton-modifier {
+	display: none;
+	flex-direction: row;
+	align-items: center;
+}
+
+.actif {
+	display: flex;
+}
+
 .cacherFiltres + div {
 	margin-top: var(--hauteurMinDefaut);
 }
