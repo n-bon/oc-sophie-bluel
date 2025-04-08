@@ -8,9 +8,10 @@
 	--contraste2: #B1663C;
 	--soutien1: #3D3D3D;
 	--soutienOmbre: rgba(0, 0, 0, 0.09);
-	/* Espacements */
+	/* Dimensions */
 	--largeurMaxOrdi: 1140px;
 	--espaceDefaut: 50px;
+	--hauteurMinDefaut: 60px;
 }
 
 body {

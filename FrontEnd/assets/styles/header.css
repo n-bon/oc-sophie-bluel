@@ -1,6 +1,24 @@
 /***************** Mise en forme du menu en-tête de la page *************************/
 
-header {
+/************ Menu réservé aux collaborateurs connectés ****************/
+.conteneur-bo-header {
+	display: none;
+	width: 100%;
+	height: var(--hauteurMinDefaut);
+	background-color: black;
+	color: white;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+}
+
+.actif {
+	display: flex;
+}
+
+/************************ Menu visible par tous ******************/
+.conteneur-header {
 	max-width: var(--largeurMaxOrdi);
 	width: 100%;
 	display: flex;
