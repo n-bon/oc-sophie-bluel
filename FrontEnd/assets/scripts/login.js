@@ -28,7 +28,9 @@ async function demanderConnexion (email, mdp) {
     })
     if (reponse.status === 200){
         let reponseFormatee = await reponse.json();
-        console.log(reponseFormatee);
+        let jetonAuth = reponseFormatee.token;
+        window.localStorage.setItem("jetonAuth", jetonAuth);
+        window.location = "./index.html"
     }else{
         afficherMessageErreur();
     };
