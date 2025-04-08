@@ -13,12 +13,12 @@
 	font-size: 16px;
 }
 
-.conteneur-bo-header .fa-solid {
-	padding: 0px 10px;
-}
-
 .actif {
 	display: flex;
+}
+
+.actif + div {
+	margin-top: 30px;
 }
 
 /************************ Menu visible par tous ******************/
