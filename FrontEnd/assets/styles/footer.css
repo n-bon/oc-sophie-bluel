@@ -1,6 +1,6 @@
 /*************************** Mise en forme du pied de page *****************************/
 footer {
-	height: 60px;
+	height: var(--hauteurMinDefaut);
 	width: 100%;
 	box-sizing: border-box;
 	background-color: white;

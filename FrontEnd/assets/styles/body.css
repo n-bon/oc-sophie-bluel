@@ -27,9 +27,18 @@
 }
 
 /********* Section portfolio ************/
+.conteneur-titre-projets {
+	display: flex;
+	height: var(--hauteurMinDefaut);
+	flex-direction: row;
+	gap: 30px;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 
 .filtres {
@@ -44,6 +53,25 @@
 	background-color: var(--contraste1);
 	color: var(--fond);
 }
+
+.cacherFiltres {
+	display: none;
+}
+
+.bouton-modifier {
+	display: none;
+	flex-direction: row;
+	align-items: center;
+}
+
+.actif {
+	display: flex;
+}
+
+.cacherFiltres + div {
+	margin-top: var(--hauteurMinDefaut);
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -88,6 +116,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
 }
 
 
