@@ -99,8 +99,7 @@
     text-align: center;
 }
 
-.modaleP1,
-.modaleP2 {
+.pageModale {
     display: none;
     flex-direction: column;
 }

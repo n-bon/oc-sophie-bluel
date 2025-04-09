@@ -1,4 +1,3 @@
-
 /** Import des modules **/
 //Programmes spécifiques à la section portfolio
 import { afficherTravaux, 
@@ -8,7 +7,8 @@ import { afficherTravaux,
 
  //Programmes spécifiques à l'affichage des fonctionnalités du backoffice
  import {afficherBackOffice,
-    afficherModalePortfolio
+    afficherModalePortfolio,
+    changerPageModale
  } from "./backoffice.js"
 
 /** Chargement des ressources **/
@@ -19,20 +19,21 @@ const travaux = await fetch("http://localhost:5678/api/works").then(travaux => t
 const categories = await fetch("http://localhost:5678/api/categories").then(categories => categories.json());
 
 /** Affichage dynamique du portfolio **/
-//Appeler la fonction d'affichage des travaux avec la liste précédemment créée
+//Affichage des travaux avec la liste précédemment créée
 afficherTravaux(travaux);
 
-//Appeler la fonction d'affichage dynamique des boutons
+//Affichage dynamique des boutons
 afficherBoutonsFiltres(categories);
 
 /** Modification dynamique du portfolio avec les filtres **/
-
 modifierPortfolioFiltres(travaux);
 
 /** Affichage des fonctionnalités collaborateur **/
-
 afficherBackOffice();
 
 /** Affichage de la modale **/
 //Creation de la structure de la modale
 afficherModalePortfolio();
+
+//Basculer d'une vue à l'autre de la page de modale
+changerPageModale();

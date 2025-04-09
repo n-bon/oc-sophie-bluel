@@ -12,7 +12,6 @@ export function afficherBackOffice() {
         boutonModifierPortfolio.classList.remove("actif");
 
     } else {
-        console.log(jetonSession)
         //afficher bandeau noir
         let bandeauNoirHeader = document.querySelector(".conteneur-bo-header");
         bandeauNoirHeader.classList.add("actif");
@@ -30,7 +29,7 @@ export function afficherBackOffice() {
 export function afficherModalePortfolio() {
     //Selection des declencheurs
     const declencheursModale = document.querySelectorAll(".declencheurModale");
-    
+
     //Selection de la modale
     const asideModale = document.querySelector(".conteneurModale");
 
@@ -41,3 +40,20 @@ export function afficherModalePortfolio() {
         });
     });
 };
+
+export function changerPageModale() {
+    //selection des boutons déclencheurs
+    const declencheursPageModale = document.querySelectorAll(".declencheurPageModale");
+    //selection des pages
+    const pagesModales = document.querySelectorAll(".pageModale");
+
+    //comportement au clic
+    declencheursPageModale.forEach(declencheur => {
+        declencheur.addEventListener("click", () => {
+            //Basculer de classe sur chaque page au clic
+            pagesModales.forEach(page => {
+                page.classList.toggle("pageModaleActive");
+            });
+        });
+    });
+}
