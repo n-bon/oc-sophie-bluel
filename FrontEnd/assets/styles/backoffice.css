@@ -41,9 +41,10 @@
 /* Arrière plan */
 .fondModale {
     visibility: hidden;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
+    bottom: 0px;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -56,16 +57,19 @@
     min-width: 420px;    
     max-width: 630px;
     height: 565px;
-    margin: 300px auto;
+    margin: 150px auto;
     background-color: white;
     border-radius: 10px;
     padding: var(--hauteurMinDefaut) 105px 45px 105px;
+    overflow: scroll;
 }
 
 .croixFermerModale {
     position: absolute;
     top: 22px;
     right: 25px;
+    width: 30px;
+    height: 30px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -76,14 +80,17 @@
     text-align: center;
 }
 
-.modaleP1 {
-    visibility: hidden;
-}
+.modaleP1,
 .modaleP2 {
-    visibility: hidden;
+    display: none;
+    flex-direction: column;
 }
 
 /** Déclencheurs d'affichage pour l'interaction avec JS **/
 .actif {
 	visibility: visible;
+}
+
+.pageModaleActive {
+    display: flex;
 }

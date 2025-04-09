@@ -88,21 +88,25 @@
 			</ul>
 		</nav>
 	</footer>
-	<aside class="fondModale declencheurModale">
-		<div class="contenuModale">
-				<i class="fa-solid fa-xmark croixFermerModale declencheurModale"></i>			
-			<div id="modaleP1">
-				<h3 class="titreModale">Galerie photo</h3>
-				<div class="interactifModale galeriePhotoModale"></div>
-				<button class="declencheurModaleP2">Ajouter une photo</button>
-			</div>
-			<div id="modaleP2">
-				<i class="fa-solid fa-arrow-left flecheP1Modale declencheurModaleP1"></i>
-				<h3 class="titreModale">Ajout Photo</h3>
-					<form method="post" action="#">
-					<div class="interactifModale ajoutPhotoModale"></div>
-					<button class="BtnValiderAjoutPhoto" type="submit">Valider</button>
-				</form>
+	<aside>
+		<div class="fondModale declencheurModale">
+			<div class="contenuModale">
+				<div class="croixFermerModale declencheurModale">
+					<i class="fa-solid fa-xmark declencheurModale"></i>	
+				</div>		
+				<div class="modaleP1 pageModaleActive">
+					<h3 class="titreModale">Galerie photo</h3>
+					<div class="interactifModale galeriePhotoModale"></div>
+					<button class="declencheurModP2">Ajouter une photo</button>
+				</div>
+				<div class="modaleP2">
+					<i class="fa-solid fa-arrow-left flecheP1Modale declencheurModP1"></i>
+					<h3 class="titreModale">Ajout Photo</h3>
+						<form method="post" action="#">
+						<div class="interactifModale ajoutPhotoModale"></div>
+						<button class="BtnValiderAjoutPhoto" type="submit">Valider</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</aside>
