@@ -7,7 +7,9 @@ import { afficherTravaux,
  } from "./portfolio.js";
 
  //Programmes spécifiques à l'affichage des fonctionnalités du backoffice
- import {afficherBackOffice} from "./backoffice.js"
+ import {afficherBackOffice,
+    afficherModalePortfolio
+ } from "./backoffice.js"
 
 /** Chargement des ressources **/
 //Charger et convertir la liste des travaux
@@ -32,15 +34,5 @@ modifierPortfolioFiltres(travaux);
 afficherBackOffice();
 
 /** Affichage de la modale **/
-
-const declencheursModale = document.querySelectorAll(".declencheurModale");
-console.log(declencheursModale)
-const asideModale = document.querySelector(".conteneurModale");
-console.log(asideModale)
-
-
-declencheursModale.forEach(declencheur => {
-    declencheur.addEventListener("click", () => {
-        asideModale.classList.toggle("actif");
-    });
-});
+//Creation de la structure de la modale
+afficherModalePortfolio();

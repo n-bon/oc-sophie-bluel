@@ -26,3 +26,18 @@ export function afficherBackOffice() {
         sectionFiltres.classList.add("cacherFiltres");
     };
 };
+
+export function afficherModalePortfolio() {
+    //Selection des declencheurs
+    const declencheursModale = document.querySelectorAll(".declencheurModale");
+    
+    //Selection de la modale
+    const asideModale = document.querySelector(".conteneurModale");
+
+    //Affichage de la modale au clic
+    declencheursModale.forEach(declencheur => {
+        declencheur.addEventListener("click", () => {
+            asideModale.classList.toggle("actif");
+        });
+    });
+};
