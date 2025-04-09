@@ -24,7 +24,7 @@
 <body>
 	<header>
 		<div class="conteneur-bo-header actif">
-			<a title="Ouvrir le mode édition" class="declencheurModale"><i class="fa-solid fa-pen-to-square"></i>Mode édition</a>
+			<a title="Mode édition" class="declencheurModale"><i class="fa-solid fa-pen-to-square"></i>Mode édition</a>
 		</div>
 		<div class="conteneur-header">
 			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -53,7 +53,7 @@
 		<section id="portfolio">
 			<div class="conteneur-titre-projets">
 					<h2>Mes Projets</h2>
-					<a title="Ouvrir le mode édition" class="bouton-modifier declencheurModale actif"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
+					<a title="Mode édition" class="bouton-modifier declencheurModale actif"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 			</div>
 			<div class="filtres">
 				<button class="filtreActif">Tous</button>
@@ -88,25 +88,24 @@
 			</ul>
 		</nav>
 	</footer>
-	<aside>
-		<div class="fondModale declencheurModale">
-			<div class="contenuModale">
-				<div class="croixFermerModale declencheurModale">
-					<i class="fa-solid fa-xmark declencheurModale"></i>	
-				</div>		
-				<div class="modaleP1 pageModaleActive">
-					<h3 class="titreModale">Galerie photo</h3>
-					<div class="interactifModale galeriePhotoModale"></div>
-					<button class="declencheurModP2">Ajouter une photo</button>
-				</div>
-				<div class="modaleP2">
-					<i class="fa-solid fa-arrow-left flecheP1Modale declencheurModP1"></i>
-					<h3 class="titreModale">Ajout Photo</h3>
-						<form method="post" action="#">
-						<div class="interactifModale ajoutPhotoModale"></div>
-						<button class="BtnValiderAjoutPhoto" type="submit">Valider</button>
-					</form>
-				</div>
+	<aside class="conteneurModale">
+		<div class="fondModale declencheurModale"></div>
+		<div class="contenuModale">
+			<button class="croixFermerModale declencheurModale">
+				<i class="fa-solid fa-xmark declencheurModale"></i>	
+			</button>
+			<div class="modaleP1 pageModaleActive">
+				<h3 class="titreModale">Galerie photo</h3>
+				<div class="interactifModale galeriePhotoModale"></div>
+				<button class="declencheurModP2">Ajouter une photo</button>
+			</div>
+			<div class="modaleP2">
+				<i class="fa-solid fa-arrow-left flecheP1Modale declencheurModP1"></i>
+				<h3 class="titreModale">Ajout Photo</h3>
+					<form method="post" action="#">
+					<div class="interactifModale ajoutPhotoModale"></div>
+					<button class="BtnValiderAjoutPhoto" type="submit">Valider</button>
+				</form>
 			</div>
 		</div>
 	</aside>

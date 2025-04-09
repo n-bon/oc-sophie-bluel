@@ -35,7 +35,7 @@ afficherBackOffice();
 
 const declencheursModale = document.querySelectorAll(".declencheurModale");
 console.log(declencheursModale)
-const asideModale = document.querySelector(".fondModale");
+const asideModale = document.querySelector(".conteneurModale");
 console.log(asideModale)
 
 

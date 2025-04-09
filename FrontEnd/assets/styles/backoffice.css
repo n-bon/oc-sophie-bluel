@@ -4,6 +4,8 @@
 /* Bandeau noir */
 .conteneur-bo-header {
     display: flex;
+    position: fixed;
+    top: 0;
 	visibility: hidden;
 	width: 100%;
 	height: var(--hauteurMinDefaut);
@@ -17,7 +19,7 @@
 
 /* Ajuster l'espacement */
 .actif + .conteneur-header {
-	margin-top: 30px;
+	margin-top: 100px;
 }
 
 /** Comportement de la section portfolio lorsque le collaborateur est connecté **/
@@ -39,10 +41,17 @@
 /** Fenêtre modale ajouter une photo **/
 
 /* Arrière plan */
-.fondModale {
+
+.conteneurModale {
     visibility: hidden;
+    display: flex;
+    align-items: flex-start ;
+    justify-content: center;
+}
+
+.fondModale {
     position: fixed;
-    top: 0px;
+    top: 60px;
     left: 0px;
     bottom: 0px;
     width: 100%;
@@ -53,11 +62,14 @@
 /* Fenêtre blanche */
 .contenuModale {
     /*Pour pouvoir placer la croix et la flèche en absolute*/
-    position: relative;
-    min-width: 420px;    
-    max-width: 630px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 420px;
     height: 565px;
-    margin: 150px auto;
+    margin-top: 150px;
+    margin-left: 20%;
+    margin-right: 20%;
     background-color: white;
     border-radius: 10px;
     padding: var(--hauteurMinDefaut) 105px 45px 105px;
@@ -66,12 +78,19 @@
 
 .croixFermerModale {
     position: absolute;
-    top: 22px;
-    right: 25px;
-    width: 30px;
-    height: 30px;
+    top: 2px;
+    right: 5px;
     font-size: 16px;
     cursor: pointer;
+    padding: 20px;
+    border-radius: none;
+    color: black;
+    border: none;
+    background-color: white;
+}
+
+.croixFermerModale i {
+    padding: 0px;
 }
 
 .contenuModale h3 {
