@@ -48,6 +48,12 @@
 	margin-bottom: var(--espaceDefaut);
 }
 
+.filtreActif {
+	background-color: var(--contraste1);
+	color: var(--fond);
+}
+
+
 /* Grille du portfolio */
 .gallery {
 	width: 100%;
