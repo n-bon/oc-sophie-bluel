@@ -38,7 +38,7 @@
 	margin-top: var(--hauteurMinDefaut);
 }
 
-/** Fenêtre modale ajouter une photo **/
+/** Fenêtre modale gérer les projets **/
 
 /* Arrière plan */
 
@@ -102,6 +102,44 @@
 .pageModale {
     display: none;
     flex-direction: column;
+}
+
+/* Vue 1 de la modale */
+
+.galeriePhotoModale {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+/* Carte pour viualiser et supprimer un projet*/
+.galeriePhotoModale article {
+    width: 75px;
+    position: relative;
+}
+
+.galeriePhotoModale img {
+    object-fit: cover;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.galeriePhotoModale button {
+    position: absolute;
+    top:0;
+    right: 0;
+    padding: 3px;
+    font-size: 11px;
+    border-radius: 2px;
+    border: none;
+    color: white;
+    background-color: black;
+    margin: 6px 5px;
+}
+
+.galeriePhotoModale i {
+    padding: 0px;
 }
 
 /** Déclencheurs d'affichage pour l'interaction avec JS **/
