@@ -16,14 +16,15 @@
 	<link rel="stylesheet" href="./assets/styles/header.css">
 	<link rel="stylesheet" href="./assets/styles/body.css">
 	<link rel="stylesheet" href="./assets/styles/footer.css">
+	<link rel="stylesheet" href="./assets/styles/backoffice.css">
 
 	<!--Lier le HTML au fichier script-->
-	<script type="module" src="./assets/scripts/index.js" defer></script>
+	<script type="module" src="./assets/scripts/index/index.js" defer></script>
 </head>
 <body>
 	<header>
 		<div class="conteneur-bo-header actif">
-			<a title="Ouvrir le mode édition" class="declencheurModale"><i class="fa-solid fa-pen-to-square"></i>Mode édition</a>
+			<a title="Mode édition" class="declencheurModale"><i class="fa-solid fa-pen-to-square"></i>Mode édition</a>
 		</div>
 		<div class="conteneur-header">
 			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -52,7 +53,7 @@
 		<section id="portfolio">
 			<div class="conteneur-titre-projets">
 					<h2>Mes Projets</h2>
-					<a title="Ouvrir le mode édition" class="bouton-modifier declencheurModale actif"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
+					<a title="Mode édition" class="bouton-modifier declencheurModale actif"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 			</div>
 			<div class="filtres">
 				<button class="filtreActif">Tous</button>
@@ -87,5 +88,26 @@
 			</ul>
 		</nav>
 	</footer>
+	<aside class="conteneurModale">
+		<div class="fondModale declencheurModale"></div>
+		<div class="contenuModale">
+			<button class="croixFermerModale declencheurModale">
+				<i class="fa-solid fa-xmark declencheurModale"></i>	
+			</button>
+			<div class="pageModale pageModaleActive">
+				<h3 class="titreModale">Galerie photo</h3>
+				<div class="interactifModale galeriePhotoModale"></div>
+				<button class="declencheurPageModale">Ajouter une photo</button>
+			</div>
+			<div class="pageModale">
+				<i class="fa-solid fa-arrow-left flecheP1Modale declencheurPageModale"></i>
+				<h3 class="titreModale">Ajout Photo</h3>
+					<form method="post" action="#">
+					<div class="interactifModale ajoutPhotoModale"></div>
+					<button class="BtnValiderAjoutPhoto" type="submit">Valider</button>
+				</form>
+			</div>
+		</div>
+	</aside>
 </body>
 </html>
