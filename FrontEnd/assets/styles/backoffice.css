@@ -3,7 +3,8 @@
 /** Menu en-tête réservé aux collaborateurs connectés ***/
 /* Bandeau noir */
 .conteneur-bo-header {
-	display: none;
+    display: flex;
+	visibility: hidden;
 	width: 100%;
 	height: var(--hauteurMinDefaut);
 	background-color: black;
@@ -22,11 +23,11 @@
 /** Comportement de la section portfolio lorsque le collaborateur est connecté **/
 
 .cacherFiltres {
-	display: none;
+	visibility: hidden;
 }
 
 .bouton-modifier {
-	display: none;
+	visibility: hidden;
 	flex-direction: row;
 	align-items: center;
 }
@@ -35,7 +36,54 @@
 	margin-top: var(--hauteurMinDefaut);
 }
 
+/** Fenêtre modale ajouter une photo **/
+
+/* Arrière plan */
+.fondModale {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Fenêtre blanche */
+.contenuModale {
+    /*Pour pouvoir placer la croix et la flèche en absolute*/
+    position: relative;
+    min-width: 420px;    
+    max-width: 630px;
+    height: 565px;
+    margin: 300px auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: var(--hauteurMinDefaut) 105px 45px 105px;
+}
+
+.croixFermerModale {
+    position: absolute;
+    top: 22px;
+    right: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contenuModale h3 {
+    font-size: 26px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.modaleP1 {
+    visibility: hidden;
+}
+.modaleP2 {
+    visibility: hidden;
+}
+
 /** Déclencheurs d'affichage pour l'interaction avec JS **/
 .actif {
-	display: flex;
+	visibility: visible;
 }
