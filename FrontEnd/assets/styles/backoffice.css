@@ -1,0 +1,44 @@
+/******Classes spécifiques à l'affichage du backoffice et de la modale******/
+
+/** Menu en-tête réservé aux collaborateurs connectés ***/
+.conteneur-bo-header {
+	display: none;
+	width: 100%;
+	height: var(--hauteurMinDefaut);
+	background-color: black;
+	color: white;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+}
+
+/* Ajuster l'espacement */
+.actif + .conteneur-header {
+	margin-top: 30px;
+}
+
+/** Modification de la section portfolio lorsque le collaborateur est connecté **/
+.filtreActif {
+	background-color: var(--contraste1);
+	color: var(--fond);
+}
+
+.cacherFiltres {
+	display: none;
+}
+
+.bouton-modifier {
+	display: none;
+	flex-direction: row;
+	align-items: center;
+}
+
+.cacherFiltres + .gallery {
+	margin-top: var(--hauteurMinDefaut);
+}
+
+/*********** Déclencheurs d'affichage pour l'interaction avec JS *********/
+.actif {
+	display: flex;
+}

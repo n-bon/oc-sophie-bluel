@@ -1,7 +1,6 @@
 
 /**************** Mise en forme du corpus de la page ****************/
-
-/************ Bannière **********/
+/** Bannière **/
 #introduction {
 	display: flex;
 	align-items: center;
@@ -26,7 +25,7 @@
 	margin-bottom: 0.5em;
 }
 
-/********* Section portfolio ************/
+/** Section portfolio **/
 .conteneur-titre-projets {
 	display: flex;
 	height: var(--hauteurMinDefaut);
@@ -49,29 +48,7 @@
 	margin-bottom: var(--espaceDefaut);
 }
 
-.filtreActif {
-	background-color: var(--contraste1);
-	color: var(--fond);
-}
-
-.cacherFiltres {
-	display: none;
-}
-
-.bouton-modifier {
-	display: none;
-	flex-direction: row;
-	align-items: center;
-}
-
-.actif {
-	display: flex;
-}
-
-.cacherFiltres + div {
-	margin-top: var(--hauteurMinDefaut);
-}
-
+/* Grille du portfolio */
 .gallery {
 	width: 100%;
 	display: grid;
@@ -84,9 +61,9 @@
 	width: 100%;
 
 }
-/******************************** Formulaires *******************************/
-/* Communs à tous les formulaires */
 
+/** Formulaires **/
+/* Communs à tous les formulaires */
 #contact form,
 .connexion form {
 	display: flex;
@@ -119,8 +96,7 @@ input[type="submit"]{
 	cursor: pointer;
 }
 
-
-/********* Section contact ************/
+/* Section contact */
 #contact {
 	width: 50%;
 margin: auto;
@@ -149,8 +125,7 @@ margin: auto;
 	box-shadow: 0px 4px 14px var(--soutienOmbre);
 }
 
-/******** Section connexion sur page dédiée *********/
-
+/* Section connexion sur page dédiée */
 .connexion {
 	max-width: 380px;
 	margin: 130px auto 0px auto;
