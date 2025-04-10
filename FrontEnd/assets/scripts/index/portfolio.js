@@ -1,5 +1,10 @@
-/******* Boucle d'affichage des travaux à partir de la liste fournie ********/
+/**
+ *   PROGRAMMES SPECIFIQUES À L'AFFICHAGE DU PORTFOLIO
+ *   gallerie de travaux et filtrage dynamique
+ **/
 
+
+/** Boucle d'affichage des travaux à partir de la liste fournie **/
 export async function afficherTravaux(travaux) {
     //Selection de l'emplacement
     let emplacementPortfolio = document.querySelector(".gallery");
@@ -30,11 +35,10 @@ export async function afficherTravaux(travaux) {
 
         //Ajout de la figure dans le container
         emplacementPortfolio.appendChild(figureTravail);
-    }
-}
+    };
+};
 
-/******************* Boucle d'affichage des filtres dynamiques ***************/
-
+/** Boucle d'affichage des filtres dynamiques **/
 export async function afficherBoutonsFiltres(filtres) {
     // Selection du div qui accueille les filtres dynamiques
     const emplacementFiltres = document.querySelector(".filtres");
@@ -50,7 +54,7 @@ export async function afficherBoutonsFiltres(filtres) {
     });
 };
 
-/**********************Fonctionnement des filtres dynamiques ***************************/
+/** Fonctionnement des filtres dynamiques **/
 //Déselectionner les autres filtres
 async function effacerSelectionFiltres (listeBoutons) {
     listeBoutons.forEach((bouton) => {
@@ -58,7 +62,7 @@ async function effacerSelectionFiltres (listeBoutons) {
             bouton.className = "";
         };
     });
-}
+};
 
 //Filtrer la liste des travaux à afficher en fonction du bouton sélectionné
 export async function modifierPortfolioFiltres (tousTravaux) {

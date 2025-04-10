@@ -1,4 +1,9 @@
-/** Import des modules **/
+/**
+ *  FICHIER PRINCIPAL DE SCRIPTS DE LA PAGE D'ACCUEIL 
+ *  contient les variables globales et appelle les différents modules
+**/
+
+/* Importer les modules présents dans d'autres fichiers */
 //Programmes spécifiques à la section portfolio
 import { afficherTravaux, 
     afficherBoutonsFiltres,
@@ -8,7 +13,9 @@ import { afficherTravaux,
  //Programmes spécifiques à l'affichage des fonctionnalités du backoffice
  import {afficherBackOffice,
     afficherModalePortfolio,
-    changerPageModale
+    changerPageModale,
+    afficherSupprimerProjet,
+    afficherCategoriesAjoutImage
  } from "./backoffice.js"
 
 /** Chargement des ressources **/
@@ -39,30 +46,7 @@ afficherModalePortfolio();
 changerPageModale();
 
 //Affichage dynamique de la fonctionnalité Supprimer un travail
-
-async function afficherSupprimerProjet(travaux) {
-    const emplacementCartes = document.querySelector(".galeriePhotoModale");
-
-    //boucle de création pour chaque projet
-
-    for (let i = 0; i < travaux.length; i++ ) {
-        //creation de l'article
-        let carte = document.createElement("article");
-        //creation de l'image
-        let image = document.createElement("img");
-        image.setAttribute("src", `${travaux[i].imageUrl}`);
-        image.setAttribute("title", `${travaux[i].title}`);
-        //creation du bouton(indiquer l'id du projet)
-        let bouton = document.createElement("button");
-        bouton.innerHTML=`<i class="fa-solid fa-trash"></i>`;
-        bouton.setAttribute("id", `${travaux[i].id}`);
-        //placer l'image dans l'article
-        carte.appendChild(image);
-        //placer le bouton dans l'article
-        carte.appendChild(bouton);
-        //placer l'article dans le conteneur
-        emplacementCartes.appendChild(carte);
-    }
-}
-
 afficherSupprimerProjet(travaux);
+
+//Affichage dynamique des catégories dans la rubrique ajouter image du BO
+afficherCategoriesAjoutImage(categories);
