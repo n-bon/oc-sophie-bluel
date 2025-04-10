@@ -102,33 +102,41 @@
 						<button><i class="fa-solid fa-trash"></i></button>
 					</article> -->
 				</div>
-				<button class="declencheurPageModale">Ajouter une photo</button>
+				<button class="btnAjoutPhoto declencheurPageModale">Ajouter une photo</button>
 			</div>
 			<div class="pageModale">
-				<i class="fa-solid fa-arrow-left flecheP1Modale declencheurPageModale"></i>
+				<button class="flecheNaviguerModale declencheurPageModale">
+					<i class="fa-solid fa-arrow-left flecheP1Modale declencheurPageModale"></i>
+				</button>
 				<h3 class="titreModale">Ajout Photo</h3>
 					<form method="post" action="#">
 					<div class="interactifModale ajoutPhotoModale">
 						<label for="ajoutImage">
-							<div class="conteneurAjoutImage"></div>
-							<i class="fa-solid fa-image"></i>							
-							<button class="btnAjoutImage">+ Ajouter photo</button>
-							<p class="indicationAjoutImage">jpg, png : 4mo max</p>
+							<div class="conteneurAjoutImage">
+								<i class="fa-solid fa-image"></i>							
+								<button>+ Ajouter photo</button>
+								<p>jpg, png : 4mo max</p>								
+							</div>
 						</label>
 						<input type="file" name="ajoutImage" id="ajoutImage" class="cacherChamp">
-						<label for="titreAjoutImage">Titre</label>
-						<input type="text" for="titreAjoutImage" id="titreAjoutImage">
-						<label for="categorieAjoutImage">Catégorie</label>
-						<select name="categorieAjoutImage" id="categorieAjoutImage">
-							<option value=""></option>
-							<!-- 
-							<option value="1">Categorie 1</option>
-							<option value="2">Categorie 2</option>
-							<option value="3">Categorie 3</option>
-							 -->
-						</select>					
+						<div class="conteneurChampsAjoutImage">
+							<label for="titreAjoutImage">Titre</label>
+							<input type="text" for="titreAjoutImage" id="titreAjoutImage">
+							<label for="categorieAjoutImage">Catégorie</label>
+							<div class="conteneurMenuCatAjoutImg">
+								<select name="categorieAjoutImage" id="categorieAjoutImage">
+									<option value=""></option>
+									<!-- 
+									<option value="1">Categorie 1</option>
+									<option value="2">Categorie 2</option>
+									<option value="3">Categorie 3</option>
+									-->
+								</select>	
+								<i class="fa-solid fa-chevron-down"></i>								
+							</div>
+						</div>
 					</div>
-					<button class="BtnValiderAjoutPhoto" type="submit">Valider</button>
+					<button class="btnValiderAjoutPhoto" type="submit">Valider</button>
 				</form>
 			</div>
 		</div>
