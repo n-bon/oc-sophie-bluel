@@ -108,7 +108,26 @@
 				<i class="fa-solid fa-arrow-left flecheP1Modale declencheurPageModale"></i>
 				<h3 class="titreModale">Ajout Photo</h3>
 					<form method="post" action="#">
-					<div class="interactifModale ajoutPhotoModale"></div>
+					<div class="interactifModale ajoutPhotoModale">
+						<label for="ajoutImage">
+							<div class="conteneurAjoutImage"></div>
+							<i class="fa-solid fa-image"></i>							
+							<button class="btnAjoutImage">+ Ajouter photo</button>
+							<p class="indicationAjoutImage">jpg, png : 4mo max</p>
+						</label>
+						<input type="file" name="ajoutImage" id="ajoutImage" class="cacherChamp">
+						<label for="titreAjoutImage">Titre</label>
+						<input type="text" for="titreAjoutImage" id="titreAjoutImage">
+						<label for="categorieAjoutImage">Catégorie</label>
+						<select name="categorieAjoutImage" id="categorieAjoutImage">
+							<option value=""></option>
+							<!-- 
+							<option value="1">Categorie 1</option>
+							<option value="2">Categorie 2</option>
+							<option value="3">Categorie 3</option>
+							 -->
+						</select>					
+					</div>
 					<button class="BtnValiderAjoutPhoto" type="submit">Valider</button>
 				</form>
 			</div>
