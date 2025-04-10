@@ -18,7 +18,6 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 	background-color: var(--fond);
-	object-fit: cover;
 }
 
 main {

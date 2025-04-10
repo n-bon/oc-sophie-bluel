@@ -77,7 +77,9 @@
 }
 
 #contact input,
-.connexion input {
+.connexion input,
+.conteneurChampsAjoutImage input,
+.conteneurChampsAjoutImage select {
 	height: var(--espaceDefaut);
 	font-size: 1.2em;
 	border: none;
