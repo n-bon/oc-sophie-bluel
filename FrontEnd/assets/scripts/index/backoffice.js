@@ -172,6 +172,8 @@ async function envoyerAjoutTravail(formulaireAjout) {
   
         //récuperer le token
         let token = window.localStorage.getItem("jetonAuth");
+        //Sélectionner l'emplacement du message de sortie (output) du formulaire
+        let messageSortie = document.querySelector(".messageFormulaireAjout");
         //Appeler la fonction d'envoi du formulaire
         try {
            let reponse = await fetch("http://localhost:5678/api/works", {
@@ -189,11 +191,12 @@ async function envoyerAjoutTravail(formulaireAjout) {
               afficherTravaux(travauxAJour);
               //appeler la fonction d'affichage des travaux à supprimer
               afficherSupprimerProjet(travauxAJour);
+              messageSortie.innerText = "projet ajouté à la gallerie avec succès"
            } else {
-              console.log("il y a eu une erreur")
+              messageSortie.innerText = "échec de l'envoi, tous les champs doivent être renseignés"
            }
         } catch (error) {
-           console.log("Problème de connexion au serveur")
+            messageSortie.innerText = "échec de l'envoi, impossible de se connecter au serveur"
         };
      });
 }
@@ -202,11 +205,8 @@ async function envoyerAjoutTravail(formulaireAjout) {
 export async function ajouterUnTravail() {
     //selection du formulaire pour soumission
     let formulaireAjout = document.querySelector("#formulaireAjout");
-    //selection des champs pour validation du formulaire 
+    //selection de l'image pour validation du format 
     let inputImage = document.querySelector("#ajoutImage");
-    let inputTitre = document.querySelector("#titreAjoutImage");
-    let inputCategorie = document.querySelector("#categorieAjoutImage");
-
     //verification de l'image 
     verifierImageFormulaireAjout(inputImage);
     //comportement à la soumission

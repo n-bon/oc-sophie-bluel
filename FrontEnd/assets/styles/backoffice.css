@@ -207,7 +207,8 @@
     color: #306685;
 }
 
-.conteneurAjoutImage p {
+.indicationAjoutImage,
+.messageFormulaireAjout {
     font-size: 10px;
     color: #444444;
 }
@@ -229,6 +230,11 @@
     margin-top: 30px;
     margin-bottom: 10px;
     color: var(--soutien1);
+}
+
+.messageFormulaireAjout {
+    padding-top: 10px;
+    text-align: center;
 }
 
 /* Menu déroulant */
