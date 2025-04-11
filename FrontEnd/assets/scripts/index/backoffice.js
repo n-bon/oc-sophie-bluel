@@ -5,6 +5,9 @@
 
 /** Chargement des programmes externes appelés dans ce fichier **/
 
+import { afficherTravaux, 
+ } from "./portfolio.js";
+
 /** Affichage du bandeau noir et du bouton **/
 export function afficherBackOffice() {
     let jetonSession = window.localStorage.getItem('jetonAuth')
@@ -72,6 +75,8 @@ export function changerPageModale() {
 //Afficher la collection de projets à supprimer
 export async function afficherSupprimerProjet(travaux) {
     const emplacementCartes = document.querySelector(".galeriePhotoModale");
+    //nettoyer gallerie avant affichage
+    emplacementCartes.innerHTML = ``;
 
     //boucle de création pour chaque projet
 
@@ -117,42 +122,93 @@ export async function afficherCategoriesAjoutImage (categories) {
     });
 };
 
-export async function ajouterUnTravail() {
-    //selectionner le formulaire
-    let formulaireAjout = document.querySelector("#formulaireAjout");
-    //ecouter la soumission
-    formulaireAjout.addEventListener("submit", async function envoiFormulaireAjout(event) {
-       //bloquer comportement par défaut
-       event.preventDefault();
-       //selection des champs du formulaire
-       let champImage = document.querySelector("#ajoutImage");
-       let champTitre = document.querySelector("#titreAjoutImage");
-       let champCategorie = document.querySelector("#categorieAjoutImage");
-       //Placer la verification des champs ici
- 
-       //creation de la charge utile de l'api
-       let chargeUtile = new FormData();
-       chargeUtile.append('image', champImage.files[0]);
-       chargeUtile.append('title', champTitre.value);
-       chargeUtile.append('category', parseInt(champCategorie.value));
- 
-       //récuperer le token
-       let token = window.localStorage.getItem("jetonAuth");
-       //Appeler la fonction d'envoi du formulaire
-       try {
-          let reponse = await fetch("http://localhost:5678/api/works", {
-             method: "POST",
-             headers: {"Authorization": `Bearer ${token}`},
-             body: chargeUtile
-          });
-          if (reponse.ok) {
-             console.log("travail ajouté")
-             formulaireAjout.reset();
-          } else {
-             console.log("il y a eu une erreur")
-          }
-       } catch (error) {
-          console.log("Problème de connexion au serveur")
-       };
+//Verification du formulaire d'ajout de fichier
+//image
+function verifierImageFormulaireAjout(inputImage) {
+    inputImage.addEventListener("change", (event) => {
+        const emplacementMessageFichier = document.querySelector(".indicationAjoutImage");
+        console.log(emplacementMessageFichier);
+        const fichier = event.target.files[0];
+        if (!fichier) {
+            emplacementMessageFichier.textContent = "veuillez charger une image : format jpg ou png, 4mo max";
+            return;
+        }
+        //Exprimer les règles de validation du fichier 
+        const formatsAutorises = ["image/jpeg", "image/png"];
+        //convertir mo en bytes
+        const tailleMaxAutoriseEnBytes = 4*1024*1024;
+        //Verifier le format de l'image
+        if (!formatsAutorises.includes(fichier.type)) {
+            emplacementMessageFichier.innerText = "format invalide, jpg ou png seulement";
+            return;
+        }
+        if (fichier.size > tailleMaxAutoriseEnBytes) {
+            emplacementMessageFichier.innerText = "fichier trop lourd, 4mo maximum";
+            return;
+        }
+        //Si tous les tests validés, indiquer que le fichier est ok
+        emplacementMessageFichier.innerText = "le fichier ajouté est valide"
     });
+
+}
+
+
+// Envoi de la requête API du formulaire  et gestion de la reponse
+async function envoyerAjoutTravail(formulaireAjout) {
+    formulaireAjout.addEventListener("submit", async function envoiFormulaireAjout(event) {
+        //bloquer comportement par défaut
+        event.preventDefault();
+        //selection des champs du formulaire
+        let champImage = document.querySelector("#ajoutImage");
+        let champTitre = document.querySelector("#titreAjoutImage");
+        let champCategorie = document.querySelector("#categorieAjoutImage");
+        //Placer la verification des champs ici
+ 
+        //creation de la charge utile de l'api
+        let chargeUtile = new FormData();
+        chargeUtile.append('image', champImage.files[0]);
+        chargeUtile.append('title', champTitre.value);
+        chargeUtile.append('category', parseInt(champCategorie.value));
+  
+        //récuperer le token
+        let token = window.localStorage.getItem("jetonAuth");
+        //Appeler la fonction d'envoi du formulaire
+        try {
+           let reponse = await fetch("http://localhost:5678/api/works", {
+              method: "POST",
+              headers: {"Authorization": `Bearer ${token}`},
+              body: chargeUtile
+           });
+           if (reponse.ok) {
+              //comportement en cas de succès
+              //effacer le formulaire
+              formulaireAjout.reset();
+              //charger la nouvelle liste de travaux depuis l'API
+              const travauxAJour = await fetch("http://localhost:5678/api/works").then(travauxAJour => travauxAJour.json());
+              //appeler la fonction d'affichage du portfolio
+              afficherTravaux(travauxAJour);
+              //appeler la fonction d'affichage des travaux à supprimer
+              afficherSupprimerProjet(travauxAJour);
+           } else {
+              console.log("il y a eu une erreur")
+           }
+        } catch (error) {
+           console.log("Problème de connexion au serveur")
+        };
+     });
+}
+
+//Gestion de l'envoi du formulaire d'ajout de projet
+export async function ajouterUnTravail() {
+    //selection du formulaire pour soumission
+    let formulaireAjout = document.querySelector("#formulaireAjout");
+    //selection des champs pour validation du formulaire 
+    let inputImage = document.querySelector("#ajoutImage");
+    let inputTitre = document.querySelector("#titreAjoutImage");
+    let inputCategorie = document.querySelector("#categorieAjoutImage");
+
+    //verification de l'image 
+    verifierImageFormulaireAjout(inputImage);
+    //comportement à la soumission
+    envoyerAjoutTravail(formulaireAjout);
  };
