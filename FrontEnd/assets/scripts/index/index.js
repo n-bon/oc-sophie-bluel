@@ -16,7 +16,8 @@ import { afficherTravaux,
     changerPageModale,
     afficherSupprimerProjet,
     afficherCategoriesAjoutImage,
-    ajouterUnTravail
+    ajouterUnTravail,
+    supprimerUnTravail
  } from "./backoffice.js"
 
 /** Chargement des ressources **/
@@ -56,13 +57,4 @@ afficherCategoriesAjoutImage(categories);
 ajouterUnTravail();
 
 //Gestion de la galerie de suppression des travaux du BO
-//selecionner les boutons à l'interieur de la galerie
-let boutonsSuppTravail = document.querySelectorAll(".boutonSupprimerProjet");
-//boucle pour écouter les clics sur les boutons
-boutonsSuppTravail.forEach(bouton =>{
-   //ecouter le clic sur le bouton
-   bouton.addEventListener("click", (event) => {
-      let idProjetASupprimer = bouton.getAttribute("projet-id");
-      console.log(idProjetASupprimer);
-   });
-});
+supprimerUnTravail();

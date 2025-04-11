@@ -71,7 +71,18 @@ export function changerPageModale() {
         });
     });
 };
+//Mise à jour des travaux suite aux modifications dans le back office
 
+async function mettreAJourTravaux () {
+    //charger la nouvelle liste de travaux depuis l'API
+    const travauxAJour = await fetch("http://localhost:5678/api/works").then(travauxAJour => travauxAJour.json());
+    //appeler la fonction d'affichage du portfolio
+    afficherTravaux(travauxAJour);
+    //appeler la fonction d'affichage des travaux à supprimer
+    afficherSupprimerProjet(travauxAJour);
+}
+
+/** Gestion de la gallerie de suppression des projets **/
 //Afficher la collection de projets à supprimer
 export async function afficherSupprimerProjet(travaux) {
     const emplacementCartes = document.querySelector(".galeriePhotoModale");
@@ -100,6 +111,43 @@ export async function afficherSupprimerProjet(travaux) {
         emplacementCartes.appendChild(carte);
     };
 };
+
+//Envoi de la requête API Delete pour supprimer un projet
+
+async function envoyerSuppressionTravail(projet) {
+    //selection du jeton d'authentification
+    let token = window.localStorage.getItem("jetonAuth");
+
+    try {
+        reponse = await fetch(`http://localhost:5678/api/works/${projet}`, {
+            method: "DELETE",
+            headers: {"Authorization": `Bearer ${token}`}
+        });
+        if (reponse.ok) {
+            console.log("supprimer avec succès");
+            //Recharger travaux
+            mettreAJourTravaux();
+        }
+    } catch (error) {
+        console.log("il y a un problème");
+    }
+}
+
+//Fonctionnalité suppression d'un travail
+export async function supprimerUnTravail() {
+    //selecionner les boutons à l'interieur de la galerie
+    let boutonsSuppTravail = document.querySelectorAll(".boutonSupprimerProjet");
+        //boucle pour écouter les clics sur les boutons
+        boutonsSuppTravail.forEach(bouton =>{
+        //ecouter le clic sur le bouton
+        bouton.addEventListener("click", (event) => {
+            let idProjetASupprimer = bouton.getAttribute("projet-id");
+            envoyerSuppressionTravail(idProjetASupprimer);
+        });
+    });
+}
+
+/** Gestion du formulaire d'ajout de projets **/
 
 //Afficher les catégories de façon dynamique dans le formulaire d'ajout de projet
 export async function afficherCategoriesAjoutImage (categories) {
@@ -185,11 +233,7 @@ async function envoyerAjoutTravail(formulaireAjout) {
               //effacer le formulaire
               formulaireAjout.reset();
               //charger la nouvelle liste de travaux depuis l'API
-              const travauxAJour = await fetch("http://localhost:5678/api/works").then(travauxAJour => travauxAJour.json());
-              //appeler la fonction d'affichage du portfolio
-              afficherTravaux(travauxAJour);
-              //appeler la fonction d'affichage des travaux à supprimer
-              afficherSupprimerProjet(travauxAJour);
+              mettreAJourTravaux();
               messageSortie.innerText = "projet ajouté à la gallerie avec succès"
            } else {
               messageSortie.innerText = "échec de l'envoi, tous les champs doivent être renseignés"
