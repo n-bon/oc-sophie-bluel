@@ -1,7 +1,7 @@
 /********************** Programmes annexes appelés dans le programme principal**************/
 
 //Gestion des erreurs de login
-async function afficherMessageErreur () {
+async function afficherMessageErreurLogin () {
     console.log("fonction lancée")
     //Selection de l'emplacement du message d'erreur
     const emplacementMessageErreur = document.querySelector("#formulaire-connexion");
@@ -18,21 +18,21 @@ async function afficherMessageErreur () {
 //Envoi de la requête http, gestion de la réponse
 async function demanderConnexion (email, mdp) {
     //envoi via l'api 
-    const reponse = await fetch("http://localhost:5678/api/users/login", {
+    let reponseConnexion = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: {"Content-Type": "application/json; charset=UTF-8"},
         body: JSON.stringify({
             email: email,
             password: mdp
         })
-    })
-    if (reponse.status === 200){
-        let reponseFormatee = await reponse.json();
+    });
+    if (reponseConnexion.status === 200){
+        let reponseFormatee = await reponseConnexion.json();
         let jetonAuth = reponseFormatee.token;
         window.localStorage.setItem("jetonAuth", jetonAuth);
         window.location = "./index.html"
     }else{
-        afficherMessageErreur();
+        afficherMessageErreurLogin();
     };
 };
 
