@@ -26,16 +26,13 @@
 
 .cacherFiltres {
 	visibility: hidden;
+    height: 16px;
 }
 
 .bouton-modifier {
 	visibility: hidden;
 	flex-direction: row;
 	align-items: center;
-}
-
-.cacherFiltres + .gallery {
-	margin-top: var(--hauteurMinDefaut);
 }
 
 /*** Fenêtre modale gérer les projets ***/
@@ -98,6 +95,7 @@
 
 .pageModale {
     display: none;
+    background-color: white;
 }
 
 /** Elements communs aux deux vues modales **/
@@ -157,6 +155,7 @@
 .btnAjoutPhoto {
     background-color: var(--contraste1);
     color: white;
+    margin-bottom: 30px;
 }
 
 /** Vue 2 de la modale **/
