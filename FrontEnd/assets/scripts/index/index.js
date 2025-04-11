@@ -39,7 +39,7 @@ modifierPortfolioFiltres(travaux);
 /** Affichage des fonctionnalités collaborateur **/
 afficherBackOffice();
 
-/** Affichage de la modale **/
+/* Affichage de la modale */
 //Creation de la structure de la modale
 afficherModalePortfolio();
 
@@ -54,3 +54,15 @@ afficherCategoriesAjoutImage(categories);
 
 //Gestion du formulaire d'ajout de projet du BO
 ajouterUnTravail();
+
+//Gestion de la galerie de suppression des travaux du BO
+//selecionner les boutons à l'interieur de la galerie
+let boutonsSuppTravail = document.querySelectorAll(".boutonSupprimerProjet");
+//boucle pour écouter les clics sur les boutons
+boutonsSuppTravail.forEach(bouton =>{
+   //ecouter le clic sur le bouton
+   bouton.addEventListener("click", (event) => {
+      let idProjetASupprimer = bouton.getAttribute("projet-id");
+      console.log(idProjetASupprimer);
+   });
+});

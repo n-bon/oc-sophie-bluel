@@ -91,6 +91,7 @@ export async function afficherSupprimerProjet(travaux) {
         let bouton = document.createElement("button");
         bouton.innerHTML=`<i class="fa-solid fa-trash"></i>`;
         bouton.setAttribute("projet-id", `${travaux[i].id}`);
+        bouton.classList.add("boutonSupprimerProjet");
         //placer l'image dans l'article
         carte.appendChild(image);
         //placer le bouton dans l'article
@@ -122,8 +123,7 @@ export async function afficherCategoriesAjoutImage (categories) {
     });
 };
 
-//Verification du formulaire d'ajout de fichier
-//image
+//Verification de l'image
 function verifierImageFormulaireAjout(inputImage) {
     inputImage.addEventListener("change", (event) => {
         const emplacementMessageFichier = document.querySelector(".indicationAjoutImage");
@@ -149,7 +149,6 @@ function verifierImageFormulaireAjout(inputImage) {
         //Si tous les tests validés, indiquer que le fichier est ok
         emplacementMessageFichier.innerText = "le fichier ajouté est valide"
     });
-
 }
 
 
