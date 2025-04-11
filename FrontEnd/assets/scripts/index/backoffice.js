@@ -90,7 +90,7 @@ export async function afficherSupprimerProjet(travaux) {
         //creation du bouton(indiquer l'id du projet)
         let bouton = document.createElement("button");
         bouton.innerHTML=`<i class="fa-solid fa-trash"></i>`;
-        bouton.setAttribute("id", `${travaux[i].id}`);
+        bouton.setAttribute("projet-id", `${travaux[i].id}`);
         //placer l'image dans l'article
         carte.appendChild(image);
         //placer le bouton dans l'article
