@@ -197,13 +197,15 @@
     color: #B9C5CC;
 }
 
-.conteneurAjoutImage button {
+.fauxBoutonAjoutPhoto {
     width: 170px;
     padding: 10px;
     background-color: #CBD6DC;
     border: none;
+    border-radius: 60px;
     font-family: 'Work Sans';
     font-size: 14px;
+    text-align: center;
     color: #306685;
 }
 
