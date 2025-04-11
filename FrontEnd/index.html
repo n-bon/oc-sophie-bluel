@@ -56,7 +56,7 @@
 					<a title="Mode édition" class="bouton-modifier declencheurModale actif"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
 			</div>
 			<div class="filtres">
-				<button class="filtreActif">Tous</button>
+				<button class="filtreActif" categorie-id="0">Tous</button>
 			</div>
 			<div class="gallery">
 				<!--Historique : Modèle de carte en dur -->
@@ -109,13 +109,13 @@
 					<i class="fa-solid fa-arrow-left flecheP1Modale declencheurPageModale"></i>
 				</button>
 				<h3 class="titreModale">Ajout Photo</h3>
-					<form method="post" action="#">
+					<form method="post" action="#" id="formulaireAjout">
 					<div class="interactifModale ajoutPhotoModale">
 						<label for="ajoutImage">
 							<div class="conteneurAjoutImage">
 								<i class="fa-solid fa-image"></i>							
-								<button>+ Ajouter photo</button>
-								<p>jpg, png : 4mo max</p>								
+								<div class="fauxBoutonAjoutPhoto">+ Ajouter photo</div>
+								<p class="indicationAjoutImage">jpg, png : 4mo max</p>								
 							</div>
 						</label>
 						<input type="file" name="ajoutImage" id="ajoutImage" class="cacherChamp">
@@ -125,7 +125,7 @@
 							<label for="categorieAjoutImage">Catégorie</label>
 							<div class="conteneurMenuCatAjoutImg">
 								<select name="categorieAjoutImage" id="categorieAjoutImage">
-									<option value=""></option>
+									<option value="0"></option>
 									<!-- 
 									<option value="1">Categorie 1</option>
 									<option value="2">Categorie 2</option>
@@ -136,6 +136,7 @@
 							</div>
 						</div>
 					</div>
+					<p class="messageFormulaireAjout"></p>
 					<button class="btnValiderAjoutPhoto" type="submit">Valider</button>
 				</form>
 			</div>

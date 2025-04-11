@@ -49,6 +49,8 @@ export async function afficherBoutonsFiltres(filtres) {
         let boutonFiltre = document.createElement("button");
         //Remplissage avec le contenu de l'API
         boutonFiltre.innerText = filtre.name;
+        //Ajout d'un attribut libre avc la référence à l'id de la catégorie
+        boutonFiltre.setAttribute("categorie-id", `${filtre.id}`);
         //Affichage dans l'UI
         emplacementFiltres.appendChild(boutonFiltre);
     });
@@ -78,14 +80,15 @@ export async function modifierPortfolioFiltres (tousTravaux) {
             effacerSelectionFiltres(boutons);
             //Ajouter la classe sur le bouton
             bouton.className= "filtreActif";
-
+            //Sélectionner l'id de la catégorie du bouton dynamique
+            let idCategorieBouton = parseInt(bouton.getAttribute("categorie-id"));
             //Comportement particulier si clic sur 'tous'
-            if (bouton.innerText === "Tous") {
+            if (idCategorieBouton === 0) {
                 afficherTravaux(tousTravaux);
             } else {
                 //Filtrage dynamique de la liste
                 let listeFiltree = tousTravaux.filter(travail => {
-                    return travail.category.name === bouton.innerText;
+                    return travail.category.id === idCategorieBouton;
                 });
                 //Appel de la fonction Afficher Travaux avec la nouvelle liste
                 afficherTravaux(listeFiltree);

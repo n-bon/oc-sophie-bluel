@@ -15,7 +15,8 @@ import { afficherTravaux,
     afficherModalePortfolio,
     changerPageModale,
     afficherSupprimerProjet,
-    afficherCategoriesAjoutImage
+    afficherCategoriesAjoutImage,
+    ajouterUnTravail
  } from "./backoffice.js"
 
 /** Chargement des ressources **/
@@ -50,3 +51,6 @@ afficherSupprimerProjet(travaux);
 
 //Affichage dynamique des catégories dans la rubrique ajouter image du BO
 afficherCategoriesAjoutImage(categories);
+
+//Gestion du formulaire d'ajout de projet du BO
+ajouterUnTravail();
