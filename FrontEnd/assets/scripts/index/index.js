@@ -16,7 +16,8 @@ import { afficherTravaux,
     changerPageModale,
     afficherSupprimerProjet,
     afficherCategoriesAjoutImage,
-    ajouterUnTravail
+    ajouterUnTravail,
+    supprimerUnTravail
  } from "./backoffice.js"
 
 /** Chargement des ressources **/
@@ -39,7 +40,7 @@ modifierPortfolioFiltres(travaux);
 /** Affichage des fonctionnalités collaborateur **/
 afficherBackOffice();
 
-/** Affichage de la modale **/
+/* Affichage de la modale */
 //Creation de la structure de la modale
 afficherModalePortfolio();
 
@@ -54,3 +55,6 @@ afficherCategoriesAjoutImage(categories);
 
 //Gestion du formulaire d'ajout de projet du BO
 ajouterUnTravail();
+
+//Gestion de la galerie de suppression des travaux du BO
+supprimerUnTravail();
