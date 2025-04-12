@@ -121,18 +121,19 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 9px;
+    align-content: flex-start;
 }
 
 /* Carte pour viualiser et supprimer un projet*/
 .galeriePhotoModale article {
     width: 75px;
     position: relative;
+    margin-bottom: 40px;
 }
 
 .galeriePhotoModale img {
     object-fit: cover;
     width: 100%;
-    margin-bottom: 20px;
 }
 
 .boutonSupprimerProjet {

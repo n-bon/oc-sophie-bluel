@@ -80,6 +80,8 @@ async function mettreAJourTravaux () {
     afficherTravaux(travauxAJour);
     //appeler la fonction d'affichage des travaux à supprimer
     afficherSupprimerProjet(travauxAJour);
+    //refaire la boucle d'écoute du clic pour supprimer
+    supprimerUnTravail();
 }
 
 /** Gestion de la gallerie de suppression des projets **/
@@ -119,17 +121,19 @@ async function envoyerSuppressionTravail(projet) {
     let token = window.localStorage.getItem("jetonAuth");
 
     try {
-        reponse = await fetch(`http://localhost:5678/api/works/${projet}`, {
+        let reponse = await fetch(`http://localhost:5678/api/works/${projet}`, {
             method: "DELETE",
             headers: {"Authorization": `Bearer ${token}`}
         });
+        console.log(reponse.status);
         if (reponse.ok) {
-            console.log("supprimer avec succès");
+            console.log("supprimé avec succès");
             //Recharger travaux
             mettreAJourTravaux();
         }
     } catch (error) {
-        console.log("il y a un problème");
+        console.log(error);
+        console.log(reponse.status);
     }
 }
 
@@ -142,6 +146,7 @@ export async function supprimerUnTravail() {
         //ecouter le clic sur le bouton
         bouton.addEventListener("click", (event) => {
             let idProjetASupprimer = bouton.getAttribute("projet-id");
+            parseInt(idProjetASupprimer);
             envoyerSuppressionTravail(idProjetASupprimer);
         });
     });
@@ -228,6 +233,7 @@ async function envoyerAjoutTravail(formulaireAjout) {
               headers: {"Authorization": `Bearer ${token}`},
               body: chargeUtile
            });
+           console.log(reponse.status);
            if (reponse.ok) {
               //comportement en cas de succès
               //effacer le formulaire
