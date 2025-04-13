@@ -114,6 +114,11 @@
     font-weight: 700;
 }
 
+.btnAjoutPhoto:hover,
+.btnValiderAjoutPhoto:hover {
+    background-color: var(--soutien2);
+}
+
 /** Vue 1 de la modale **/
 
 .galeriePhotoModale {

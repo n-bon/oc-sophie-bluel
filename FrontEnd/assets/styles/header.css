@@ -30,7 +30,10 @@ nav img {
 	cursor: pointer;
 }
 
-li:hover,
 nav a:hover {
 	color: var(--contraste2);
+}
+
+.pageMenuActive {
+	font-weight: 700;
 }

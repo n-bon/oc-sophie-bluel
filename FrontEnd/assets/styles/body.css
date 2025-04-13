@@ -23,6 +23,11 @@
 
 #introduction p {
 	margin-bottom: 0.5em;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 100%;
+	color: var(--soutien1);
+	max-width: 400px;
 }
 
 /** Section portfolio **/
@@ -48,6 +53,11 @@
 	margin-bottom: var(--espaceDefaut);
 }
 
+.filtres button {
+	padding: 10px 14px;
+	min-width: 100px;
+}
+
 .filtreActif {
 	background-color: var(--contraste1);
 	color: var(--fond);
@@ -68,6 +78,10 @@
 
 }
 
+.gallery figcaption {
+	color: var(--soutien1);
+}
+
 /** Formulaires **/
 /* Communs à tous les formulaires */
 #contact form,
@@ -76,14 +90,21 @@
 	flex-direction: column;
 }
 
-#contact input,
-.connexion input,
-.conteneurChampsAjoutImage input,
-.conteneurChampsAjoutImage select {
+.champFormulaire {
 	height: var(--espaceDefaut);
-	font-size: 1.2em;
+	font-family: 'Work Sans';
+	font-size: 14px;
+	color: #444444;
 	border: none;
 	box-shadow: 0px 4px 14px var(--soutienOmbre);
+	padding-left: 16px;
+}
+
+.champMessage {
+	resize: none;
+	height: 175px;
+	overflow: scroll;
+	padding-top: 16px;
 }
 
 #contact label,
@@ -92,16 +113,23 @@
 }
 
 
-input[type="submit"]{
+.btnFormulaire {
 	font-family: 'Syne';
 	font-weight: 700;
+	font-size: 14px;
+	text-align: center;	
 	color: white;
 	background-color: var(--contraste1);
+	border: none;
+	border-radius: 60px ;	
 	margin : 2em auto ;
 	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
-	cursor: pointer;
+	padding: 10px 0px;
+	cursor: pointer;	
+}
+
+.btnFormulaire:hover {
+	background-color: var(--soutien2);
 }
 
 /* Section contact */
@@ -144,12 +172,6 @@ margin: auto;
 	text-align: center;
 }
 
-.connexion a {
-	display: block;
-	margin-top: 7px;
-	text-align: center;
-	color: var(--soutien1);
-}
 
 .connexion [type="submit"]{
 	margin : 2em auto 1em auto ;
@@ -161,4 +183,12 @@ margin: auto;
 	color: var(--soutien1);
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+.mdpOublie {
+	display: block;
+	margin-top: 16px;
+	text-align: center;
+	color: var(--soutien1);
+	text-decoration: underline;
 }
