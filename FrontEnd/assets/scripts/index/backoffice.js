@@ -180,7 +180,6 @@ export async function afficherCategoriesAjoutImage (categories) {
 function verifierImageFormulaireAjout(inputImage) {
     inputImage.addEventListener("change", (event) => {
         const emplacementMessageFichier = document.querySelector(".indicationAjoutImage");
-        console.log(emplacementMessageFichier);
         const fichier = event.target.files[0];
         if (!fichier) {
             emplacementMessageFichier.textContent = "veuillez charger une image : format jpg ou png, 4mo max";
@@ -199,11 +198,59 @@ function verifierImageFormulaireAjout(inputImage) {
             emplacementMessageFichier.innerText = "fichier trop lourd, 4mo maximum";
             return;
         }
-        //Si tous les tests validés, indiquer que le fichier est ok
-        emplacementMessageFichier.innerText = "le fichier ajouté est valide"
+        //Si tous les tests validés, indiquer chargr la miniature
+        //Selection des balises pour l'aperçu : bloc et image
+        const blocApercu = document.querySelector(".previsualiserImage");
+        const imageApercu = document.querySelector("#apercuImage");
+        //Creation d'une URL à partir de l'image chargée
+        const urlImage = URL.createObjectURL(fichier);
+        imageApercu.src = urlImage;
+        //afficher le bloc d'aperçu qui était caché
+        blocApercu.classList.add("afficherApercuImage");
     });
-}
+};
 
+//Validation du formulaire d'ajout et déblocage du bouton
+
+async function validationFormulaireAjoutTravail(formulaireAjout) {
+    //placer les validations dans écouteur change du formulaire
+    formulaireAjout.addEventListener("change", () => {
+        //selection des champs du formulaire
+        let champImage = document.querySelector("#ajoutImage");
+        let champTitre = document.querySelector("#titreAjoutImage");
+        let champCategorie = document.querySelector("#categorieAjoutImage");
+        //selection du bouton
+        let btnValiderFormulaire = document.querySelector(".btnValiderAjoutPhoto");
+        //---validation de l'image        
+        //formats autorisés
+        const formatsAutorises = ["image/jpeg", "image/png"];
+        //convertir mo en bytes
+        const tailleMaxAutoriseEnBytes = 4*1024*1024;
+        //selection de l'image chargee
+        const imageChargee = champImage.files[0];
+        //conditions du formulaire à passer pour activer le bouton
+        if (!formatsAutorises.includes(imageChargee.type)) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        if (imageChargee.size > tailleMaxAutoriseEnBytes) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        //validation du champ titre
+        if (champTitre.value.length < 5) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        //validation du champ catégorie
+        if (champCategorie.value === "0" ) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        //Quand toutes les barrières passées, enlever le disabled du bouton
+        btnValiderFormulaire.disabled = false;
+    });
+};
 
 // Envoi de la requête API du formulaire  et gestion de la reponse
 async function envoyerAjoutTravail(formulaireAjout) {
@@ -214,7 +261,6 @@ async function envoyerAjoutTravail(formulaireAjout) {
         let champImage = document.querySelector("#ajoutImage");
         let champTitre = document.querySelector("#titreAjoutImage");
         let champCategorie = document.querySelector("#categorieAjoutImage");
-        //Placer la verification des champs ici
  
         //creation de la charge utile de l'api
         let chargeUtile = new FormData();
@@ -235,9 +281,14 @@ async function envoyerAjoutTravail(formulaireAjout) {
            });
            console.log(reponse.status);
            if (reponse.ok) {
-              //comportement en cas de succès
+              //---comportement en cas de succès
               //effacer le formulaire
               formulaireAjout.reset();
+              //remise à zero du bloc image du formulaire
+              const emplacementIndicationImage = document.querySelector(".indicationAjoutImage");
+              emplacementIndicationImage.innerText = "jpg, png : 4mo max";
+              const blocApercu = document.querySelector(".previsualiserImage");
+              blocApercu.classList.remove("afficherApercuImage");
               //charger la nouvelle liste de travaux depuis l'API
               mettreAJourTravaux();
               messageSortie.innerText = "projet ajouté à la gallerie avec succès"
@@ -258,6 +309,8 @@ export async function ajouterUnTravail() {
     let inputImage = document.querySelector("#ajoutImage");
     //verification de l'image 
     verifierImageFormulaireAjout(inputImage);
+    //------ Appeler ici la fonction pour vérifier le formulaire et délboquer le bouton
+    validationFormulaireAjoutTravail(formulaireAjout);
     //comportement à la soumission
     envoyerAjoutTravail(formulaireAjout);
  };
