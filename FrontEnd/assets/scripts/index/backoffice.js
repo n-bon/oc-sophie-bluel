@@ -199,10 +199,17 @@ function verifierImageFormulaireAjout(inputImage) {
             emplacementMessageFichier.innerText = "fichier trop lourd, 4mo maximum";
             return;
         }
-        //Si tous les tests validés, indiquer que le fichier est ok
-        emplacementMessageFichier.innerText = "le fichier ajouté est valide"
+        //Si tous les tests validés, indiquer chargr la miniature
+        //Selection des balises pour l'aperçu : bloc et image
+        const blocApercu = document.querySelector(".previsualiserImage");
+        const imageApercu = document.querySelector("#apercuImage");
+        //Creation d'une URL à partir de l'image chargée
+        const urlImage = URL.createObjectURL(fichier);
+        imageApercu.src = urlImage;
+        //afficher le bloc d'aperçu qui était caché
+        blocApercu.classList.add("afficherApercuImage");
     });
-}
+};
 
 
 // Envoi de la requête API du formulaire  et gestion de la reponse
@@ -258,6 +265,7 @@ export async function ajouterUnTravail() {
     let inputImage = document.querySelector("#ajoutImage");
     //verification de l'image 
     verifierImageFormulaireAjout(inputImage);
+    //------ Appeler ici la fonction pour vérifier le formulaire et délboquer le bouton
     //comportement à la soumission
     envoyerAjoutTravail(formulaireAjout);
  };
