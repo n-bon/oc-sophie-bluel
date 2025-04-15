@@ -211,6 +211,47 @@ function verifierImageFormulaireAjout(inputImage) {
     });
 };
 
+//Validation du formulaire d'ajout et déblocage du bouton
+
+async function validationFormulaireAjoutTravail(formulaireAjout) {
+    //placer les validations dans écouteur change du formulaire
+    formulaireAjout.addEventListener("change", () => {
+        //selection des champs du formulaire
+        let champImage = document.querySelector("#ajoutImage");
+        let champTitre = document.querySelector("#titreAjoutImage");
+        let champCategorie = document.querySelector("#categorieAjoutImage");
+        //selection du bouton
+        let btnValiderFormulaire = document.querySelector(".btnValiderAjoutPhoto");
+        //---validation de l'image        
+        //formats autorisés
+        const formatsAutorises = ["image/jpeg", "image/png"];
+        //convertir mo en bytes
+        const tailleMaxAutoriseEnBytes = 4*1024*1024;
+        //selection de l'image chargee
+        const imageChargee = champImage.files[0];
+        //conditions du formulaire à passer pour activer le bouton
+        if (!formatsAutorises.includes(imageChargee.type)) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        if (imageChargee.size > tailleMaxAutoriseEnBytes) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        //validation du champ titre
+        if (champTitre.value.length < 5) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        //validation du champ catégorie
+        if (champCategorie.value === "0" ) {
+            btnValiderFormulaire.disabled = true;
+            return;
+        };
+        //Quand toutes les barrières passées, enlever le disabled du bouton
+        btnValiderFormulaire.disabled = false;
+    });
+};
 
 // Envoi de la requête API du formulaire  et gestion de la reponse
 async function envoyerAjoutTravail(formulaireAjout) {
@@ -266,6 +307,7 @@ export async function ajouterUnTravail() {
     //verification de l'image 
     verifierImageFormulaireAjout(inputImage);
     //------ Appeler ici la fonction pour vérifier le formulaire et délboquer le bouton
+    validationFormulaireAjoutTravail(formulaireAjout);
     //comportement à la soumission
     envoyerAjoutTravail(formulaireAjout);
  };
