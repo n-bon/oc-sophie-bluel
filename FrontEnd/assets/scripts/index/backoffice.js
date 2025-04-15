@@ -180,7 +180,6 @@ export async function afficherCategoriesAjoutImage (categories) {
 function verifierImageFormulaireAjout(inputImage) {
     inputImage.addEventListener("change", (event) => {
         const emplacementMessageFichier = document.querySelector(".indicationAjoutImage");
-        console.log(emplacementMessageFichier);
         const fichier = event.target.files[0];
         if (!fichier) {
             emplacementMessageFichier.textContent = "veuillez charger une image : format jpg ou png, 4mo max";
@@ -262,7 +261,6 @@ async function envoyerAjoutTravail(formulaireAjout) {
         let champImage = document.querySelector("#ajoutImage");
         let champTitre = document.querySelector("#titreAjoutImage");
         let champCategorie = document.querySelector("#categorieAjoutImage");
-        //Placer la verification des champs ici
  
         //creation de la charge utile de l'api
         let chargeUtile = new FormData();
@@ -283,9 +281,14 @@ async function envoyerAjoutTravail(formulaireAjout) {
            });
            console.log(reponse.status);
            if (reponse.ok) {
-              //comportement en cas de succès
+              //---comportement en cas de succès
               //effacer le formulaire
               formulaireAjout.reset();
+              //remise à zero du bloc image du formulaire
+              const emplacementIndicationImage = document.querySelector(".indicationAjoutImage");
+              emplacementIndicationImage.innerText = "jpg, png : 4mo max";
+              const blocApercu = document.querySelector(".previsualiserImage");
+              blocApercu.classList.remove("afficherApercuImage");
               //charger la nouvelle liste de travaux depuis l'API
               mettreAJourTravaux();
               messageSortie.innerText = "projet ajouté à la gallerie avec succès"
