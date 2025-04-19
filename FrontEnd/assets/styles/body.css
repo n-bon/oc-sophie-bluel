@@ -58,6 +58,12 @@
 	min-width: 100px;
 }
 
+.filtres button:hover {
+	color: white;
+	background-color: var(--soutien2);
+}
+
+
 .filtreActif {
 	background-color: var(--contraste1);
 	color: var(--fond);
