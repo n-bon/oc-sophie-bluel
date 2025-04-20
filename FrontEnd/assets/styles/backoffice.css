@@ -94,8 +94,20 @@
 }
 
 .pageModale {
-    display: none;
     background-color: white;
+}
+
+.pageModale2 {
+    display: none;
+}
+
+.contenuPageModale2 {
+    background-color: white;
+    width: 420px;
+    height: 620px;
+    position: absolute;
+    top: var(--espaceDefaut);
+    left: 105px;
 }
 
 /** Elements communs aux deux vues modales **/
@@ -301,10 +313,10 @@
 }
 
 /*** Déclencheurs d'affichage pour l'interaction avec JS ***/
-.actif {
-	visibility: visible;
+.pageModale2Active {
+    display: contents;
 }
 
-.pageModaleActive {
-    display: contents;
+.actif {
+	visibility: visible;
 }

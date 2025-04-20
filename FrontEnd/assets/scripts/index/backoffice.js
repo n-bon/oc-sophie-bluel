@@ -61,7 +61,11 @@ export function afficherModalePortfolio() {
     //Affichage de la modale au clic
     declencheursModale.forEach(declencheur => {
         declencheur.addEventListener("click", () => {
+            //enlever l'affichage de la modale
             asideModale.classList.toggle("actif");
+            //enlever l'affichage de la page 2, pour que s'affiche la page 1 à la réouverture
+            const pageModale2 = document.querySelector(".pageModale2");
+            pageModale2.classList.remove("pageModale2Active");
         });
     });
 };
@@ -71,15 +75,13 @@ export function changerPageModale() {
     //selection des boutons déclencheurs
     const declencheursPageModale = document.querySelectorAll(".declencheurPageModale");
     //selection des pages
-    const pagesModales = document.querySelectorAll(".pageModale");
-
+    const pageModale2 = document.querySelector(".pageModale2");
+    console.log(pageModale2);
     //comportement au clic
     declencheursPageModale.forEach(declencheur => {
         declencheur.addEventListener("click", () => {
-            //Basculer de classe sur chaque page au clic
-            pagesModales.forEach(page => {
-                page.classList.toggle("pageModaleActive");
-            });
+            //Basculer de classe la page 2 au clic
+            pageModale2.classList.toggle("pageModale2Active");
         });
     });
 };
