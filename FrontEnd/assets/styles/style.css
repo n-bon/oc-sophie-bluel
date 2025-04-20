@@ -10,7 +10,7 @@
 	--soutien2: #0E2F28;
 	--soutienOmbre: rgba(0, 0, 0, 0.09);
 	/* Dimensions */
-	--largeurMaxOrdi: 1140px;
+	--largeurMaxOrdi: 950px;
 	--espaceDefaut: 50px;
 	--hauteurMinDefaut: 60px;
 }

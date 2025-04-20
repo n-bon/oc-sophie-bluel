@@ -35,6 +35,10 @@ export function afficherBackOffice() {
         let sectionFiltres = document.querySelector(".filtres");
         sectionFiltres.classList.add("cacherFiltres");
 
+        //Ajuster l'espace de l'introduction
+        let sectionIntro = document.querySelector(".introduction");
+        sectionIntro.classList.add("introductionMiniBO");
+
         // gestion de la deconnexion
         //selectionner l'item login et le changer en lien logout
         let itemLogin = document.querySelector("#lienConnexion");

@@ -1,10 +1,10 @@
 /***************** Menu en-tête de la page *************************/
 .conteneur-header {
-	max-width: var(--largeurMaxOrdi);
+	max-width: 1140px;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	margin: var(--espaceDefaut) auto;
+	margin: var(--espaceDefaut) auto ;
 }
 
 nav ul {
