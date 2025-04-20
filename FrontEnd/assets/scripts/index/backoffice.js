@@ -16,20 +16,20 @@ export function afficherBackOffice() {
     if (jetonSession === null) {
         //Cacher bandeau noir
         let bandeauNoirHeader = document.querySelector(".conteneur-bo-header");
-        bandeauNoirHeader.classList.remove("actif");
+        bandeauNoirHeader.classList.remove("bandeauBOActif");
 
         //Cacher lien modifier
         let boutonModifierPortfolio = document.querySelector(".bouton-modifier");
-        boutonModifierPortfolio.classList.remove("actif");
+        boutonModifierPortfolio.classList.remove("boutonModifierActif");
 
     } else {
         //afficher bandeau noir
         let bandeauNoirHeader = document.querySelector(".conteneur-bo-header");
-        bandeauNoirHeader.classList.add("actif");
+        bandeauNoirHeader.classList.add("bandeauBOActif");
 
         //afficher lien modifier
         let boutonModifierPortfolio = document.querySelector(".bouton-modifier");
-        boutonModifierPortfolio.classList.add("actif");
+        boutonModifierPortfolio.classList.add("boutonModifierActif");
         
         //cacher boutons filtres
         let sectionFiltres = document.querySelector(".filtres");

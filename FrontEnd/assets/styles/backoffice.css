@@ -18,7 +18,7 @@
 }
 
 /* Ajuster l'espacement */
-.actif + .conteneur-header {
+.bandeauBOActif + .conteneur-header {
 	margin-top: 100px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .bouton-modifier {
-	visibility: hidden;
+	display: none;
 	flex-direction: row;
 	align-items: center;
 }
@@ -321,8 +321,12 @@
     display: contents;
 }
 
-.actif {
+.bandeauBOActif {
 	visibility: visible;
+}
+
+.boutonModifierActif {
+    display: flex;
 }
 
 /*** Gestion des erreurs ***/
