@@ -320,3 +320,10 @@
 .actif {
 	visibility: visible;
 }
+
+/*** Gestion des erreurs ***/
+
+.alerteErreur {
+    color: red;
+    font-weight: 800;
+}

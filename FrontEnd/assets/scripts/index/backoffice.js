@@ -60,7 +60,7 @@ function reinitialiserFormulaireAjoutTravail() {
     formulaire.reset();
     //reset du bloc ajout image
     const emplacementIndicationImage = document.querySelector(".indicationAjoutImage");
-    emplacementIndicationImage.innerText = "jpg, png : 4mo max";
+    emplacementIndicationImage.innerHTML = `jpg, png : 4mo max`;
     const blocApercu = document.querySelector(".previsualiserImage");
     blocApercu.classList.remove("afficherApercuImage");
     //vider le message output du formulaire
@@ -221,7 +221,7 @@ function verifierImageFormulaireAjout(inputImage) {
         const emplacementMessageFichier = document.querySelector(".indicationAjoutImage");
         const fichier = event.target.files[0];
         if (!fichier) {
-            emplacementMessageFichier.textContent = "veuillez charger une image : format jpg ou png, 4mo max";
+            emplacementMessageFichier.innerHTML= `<span class="alerteErreur">veuillez charger une image : format jpg ou png, 4mo max</span>`;
             return;
         }
         //Exprimer les règles de validation du fichier 
@@ -230,11 +230,11 @@ function verifierImageFormulaireAjout(inputImage) {
         const tailleMaxAutoriseEnBytes = 4*1024*1024;
         //Verifier le format de l'image
         if (!formatsAutorises.includes(fichier.type)) {
-            emplacementMessageFichier.innerText = "format invalide, jpg ou png seulement";
+            emplacementMessageFichier.innerHTML = `<span class="alerteErreur">format invalide, jpg ou png seulement</span>`;
             return;
         }
         if (fichier.size > tailleMaxAutoriseEnBytes) {
-            emplacementMessageFichier.innerText = "fichier trop lourd, 4mo maximum";
+            emplacementMessageFichier.innerHTML = `<span class="alerteErreur">fichier trop lourd, 4mo maximum</span>`;
             return;
         }
         //Si tous les tests validés, indiquer chargr la miniature
@@ -327,7 +327,7 @@ async function envoyerAjoutTravail(formulaireAjout) {
               mettreAJourTravaux();
            } else {}
         } catch (error) {
-            messageSortie.innerText = "échec de l'envoi, impossible de se connecter au serveur"
+            messageSortie.innerHTML = `<span class="alerteErreur">impossible de se connecter au serveur, réessayez plus tard</span>`
         };
      });
 }
