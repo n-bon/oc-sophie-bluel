@@ -39,7 +39,7 @@ export function afficherBackOffice() {
         //selectionner l'item login et le changer en lien logout
         let itemLogin = document.querySelector("#lienConnexion");
         itemLogin.innerHTML = `<a href="#" title="Se déconnecter">logout</a>`;
-        //ecouter le clic sur log out
+        //ecouter le clic sur logout
         itemLogin.addEventListener("click", () => {
             //supprimer le jeton d'authentification
             window.localStorage.removeItem('jetonAuth');
@@ -48,6 +48,27 @@ export function afficherBackOffice() {
         });
     };
 };
+
+/** Effacer le formulaire d'ajout de projet **/
+//fonction appelée : après ajout d'un travail, quitte la P2 de la modale, ferme la modale
+
+function reinitialiserFormulaireAjoutTravail() {
+    //selection du formulaire et du message de sortie
+    const formulaire = document.querySelector("#formulaireAjout");
+    let messageSortie = document.querySelector(".messageFormulaireAjout");
+    //reset du formulaire
+    formulaire.reset();
+    //reset du bloc ajout image
+    const emplacementIndicationImage = document.querySelector(".indicationAjoutImage");
+    emplacementIndicationImage.innerText = "jpg, png : 4mo max";
+    const blocApercu = document.querySelector(".previsualiserImage");
+    blocApercu.classList.remove("afficherApercuImage");
+    //vider le message output du formulaire
+    messageSortie.innerHTML=``;
+    //desactiver le bouton
+    let btnValiderFormulaire = document.querySelector(".btnValiderAjoutPhoto");
+    btnValiderFormulaire.disabled = true;
+}
 
 /** Affichage de la page modale **/
 //Afficher la page au clic
@@ -66,6 +87,8 @@ export function afficherModalePortfolio() {
             //enlever l'affichage de la page 2, pour que s'affiche la page 1 à la réouverture
             const pageModale2 = document.querySelector(".pageModale2");
             pageModale2.classList.remove("pageModale2Active");
+            //reinitialiser le formulaire d'ajout
+            reinitialiserFormulaireAjoutTravail();
         });
     });
 };
@@ -82,6 +105,8 @@ export function changerPageModale() {
         declencheur.addEventListener("click", () => {
             //Basculer de classe la page 2 au clic
             pageModale2.classList.toggle("pageModale2Active");
+            //reinitialiser le formulaire
+            reinitialiserFormulaireAjoutTravail();
         });
     });
 };
@@ -297,18 +322,10 @@ async function envoyerAjoutTravail(formulaireAjout) {
            if (reponse.ok) {
               //---comportement en cas de succès
               //effacer le formulaire
-              formulaireAjout.reset();
-              //remise à zero du bloc image du formulaire
-              const emplacementIndicationImage = document.querySelector(".indicationAjoutImage");
-              emplacementIndicationImage.innerText = "jpg, png : 4mo max";
-              const blocApercu = document.querySelector(".previsualiserImage");
-              blocApercu.classList.remove("afficherApercuImage");
+              reinitialiserFormulaireAjoutTravail();
               //charger la nouvelle liste de travaux depuis l'API
               mettreAJourTravaux();
-              messageSortie.innerText = "projet ajouté à la gallerie avec succès"
-           } else {
-              messageSortie.innerText = "échec de l'envoi, tous les champs doivent être renseignés"
-           }
+           } else {}
         } catch (error) {
             messageSortie.innerText = "échec de l'envoi, impossible de se connecter au serveur"
         };
