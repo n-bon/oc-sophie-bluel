@@ -8,7 +8,7 @@
 import { afficherTravaux, 
  } from "./portfolio.js";
 
-/** Affichage du bandeau noir et du bouton **/
+/** Affichage du bandeau noir, du bouton et de log out **/
 export function afficherBackOffice() {
     let jetonSession = window.localStorage.getItem('jetonAuth')
 
@@ -34,6 +34,18 @@ export function afficherBackOffice() {
         //cacher boutons filtres
         let sectionFiltres = document.querySelector(".filtres");
         sectionFiltres.classList.add("cacherFiltres");
+
+        // gestion de la deconnexion
+        //selectionner l'item login et le changer en lien logout
+        let itemLogin = document.querySelector("#lienConnexion");
+        itemLogin.innerHTML = `<a href="#" title="Se déconnecter">logout</a>`;
+        //ecouter le clic sur log out
+        itemLogin.addEventListener("click", () => {
+            //supprimer le jeton d'authentification
+            window.localStorage.removeItem('jetonAuth');
+            //recharger la page d'accueil pour enlever les fonctionnalités backoffice
+            window.location = "./index.html";
+        });
     };
 };
 
