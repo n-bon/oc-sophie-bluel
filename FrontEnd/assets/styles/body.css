@@ -86,6 +86,7 @@
 
 .gallery figcaption {
 	color: var(--soutien1);
+	margin-top: 7px;
 }
 
 /** Formulaires **/
