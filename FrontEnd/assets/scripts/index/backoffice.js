@@ -103,7 +103,6 @@ export function changerPageModale() {
     const declencheursPageModale = document.querySelectorAll(".declencheurPageModale");
     //selection des pages
     const pageModale2 = document.querySelector(".pageModale2");
-    console.log(pageModale2);
     //comportement au clic
     declencheursPageModale.forEach(declencheur => {
         declencheur.addEventListener("click", () => {
@@ -168,9 +167,7 @@ async function envoyerSuppressionTravail(projet) {
             method: "DELETE",
             headers: {"Authorization": `Bearer ${token}`}
         });
-        console.log(reponse.status);
         if (reponse.ok) {
-            console.log("supprimé avec succès");
             //Recharger travaux
             mettreAJourTravaux();
         }
@@ -322,7 +319,6 @@ async function envoyerAjoutTravail(formulaireAjout) {
               headers: {"Authorization": `Bearer ${token}`},
               body: chargeUtile
            });
-           console.log(reponse.status);
            if (reponse.ok) {
               //---comportement en cas de succès
               //effacer le formulaire
