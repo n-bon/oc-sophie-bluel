@@ -58,6 +58,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 
 /** Fenêtre blanche **/
@@ -158,6 +159,7 @@
 .galeriePhotoModale img {
     object-fit: cover;
     width: 100%;
+    height: 100px;
 }
 
 .boutonSupprimerProjet {
