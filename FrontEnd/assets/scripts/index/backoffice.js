@@ -8,11 +8,11 @@
 import { afficherTravaux, 
  } from "./portfolio.js";
 
-/** Affichage du bandeau noir, du bouton et de log out **/
+/** Affichage du bandeau noir, du bouton modifier et de log out **/
 export function afficherBackOffice() {
     let jetonSession = window.localStorage.getItem('jetonAuth')
 
-    //Comportement de la page selon que l'utilisateur soit caché ou non
+    //Comportement de la page selon que l'utilisateur soit connecté ou non
     if (jetonSession === null) {
         //Cacher bandeau noir
         let bandeauNoirHeader = document.querySelector(".conteneur-bo-header");
@@ -54,7 +54,7 @@ export function afficherBackOffice() {
 };
 
 /** Effacer le formulaire d'ajout de projet **/
-//fonction appelée : après ajout d'un travail, quitte la P2 de la modale, ferme la modale
+//fonction appelée : après ajout d'un travail, quand on quitte la P2 de la modale, quand on ferme la modale
 
 function reinitialiserFormulaireAjoutTravail() {
     //selection du formulaire et du message de sortie
@@ -72,7 +72,7 @@ function reinitialiserFormulaireAjoutTravail() {
     //desactiver le bouton
     let btnValiderFormulaire = document.querySelector(".btnValiderAjoutPhoto");
     btnValiderFormulaire.disabled = true;
-}
+};
 
 /** Affichage de la page modale **/
 //Afficher la page au clic
@@ -113,8 +113,8 @@ export function changerPageModale() {
         });
     });
 };
-//Mise à jour des travaux suite aux modifications dans le back office
 
+//Mise à jour des travaux suite aux modifications dans le back office
 async function mettreAJourTravaux () {
     //charger la nouvelle liste de travaux depuis l'API
     const travauxAJour = await fetch("http://localhost:5678/api/works").then(travauxAJour => travauxAJour.json());
@@ -124,7 +124,7 @@ async function mettreAJourTravaux () {
     afficherSupprimerProjet(travauxAJour);
     //refaire la boucle d'écoute du clic pour supprimer
     supprimerUnTravail();
-}
+};
 
 /** Gestion de la gallerie de suppression des projets **/
 //Afficher la collection de projets à supprimer
@@ -134,7 +134,6 @@ export async function afficherSupprimerProjet(travaux) {
     emplacementCartes.innerHTML = ``;
 
     //boucle de création pour chaque projet
-
     for (let i = 0; i < travaux.length; i++ ) {
         //creation de l'article
         let carte = document.createElement("article");
@@ -157,7 +156,6 @@ export async function afficherSupprimerProjet(travaux) {
 };
 
 //Envoi de la requête API Delete pour supprimer un projet
-
 async function envoyerSuppressionTravail(projet) {
     //selection du jeton d'authentification
     let token = window.localStorage.getItem("jetonAuth");
@@ -175,7 +173,7 @@ async function envoyerSuppressionTravail(projet) {
         console.log(error);
         console.log(reponse.status);
     }
-}
+};
 
 //Fonctionnalité suppression d'un travail
 export async function supprimerUnTravail() {
@@ -190,10 +188,9 @@ export async function supprimerUnTravail() {
             envoyerSuppressionTravail(idProjetASupprimer);
         });
     });
-}
+};
 
 /** Gestion du formulaire d'ajout de projets **/
-
 //Afficher les catégories de façon dynamique dans le formulaire d'ajout de projet
 export async function afficherCategoriesAjoutImage (categories) {
     //selectionner le menu déroulant
@@ -251,7 +248,6 @@ function verifierImageFormulaireAjout(inputImage) {
 };
 
 //Validation du formulaire d'ajout et déblocage du bouton
-
 async function validationFormulaireAjoutTravail(formulaireAjout) {
     //placer les validations dans écouteur change du formulaire
     formulaireAjout.addEventListener("change", () => {
@@ -330,7 +326,7 @@ async function envoyerAjoutTravail(formulaireAjout) {
             messageSortie.innerHTML = `<span class="alerteErreur">impossible de se connecter au serveur, réessayez plus tard</span>`
         };
      });
-}
+};
 
 //Gestion de l'envoi du formulaire d'ajout de projet
 export async function ajouterUnTravail() {
