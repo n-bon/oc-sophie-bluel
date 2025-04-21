@@ -10,7 +10,7 @@
 	--soutien2: #0E2F28;
 	--soutienOmbre: rgba(0, 0, 0, 0.09);
 	/* Dimensions */
-	--largeurMaxOrdi: 1140px;
+	--largeurMaxOrdi: 950px;
 	--espaceDefaut: 50px;
 	--hauteurMinDefaut: 60px;
 }
@@ -30,7 +30,7 @@ section {
 	margin: var(--espaceDefaut) 0;
 }
 
-h1{
+h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -46,7 +46,7 @@ h1 > span {
 ;
 }
 
-h2{
+h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
@@ -61,7 +61,7 @@ a {
 label {
 	color: var(--soutien1);
 }
-button{
+button {
 	font-family: 'Syne';
 	font-size: 14px;
 	color: var(--contraste1);

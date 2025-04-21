@@ -23,23 +23,23 @@
 </head>
 <body>
 	<header>
-		<div class="conteneur-bo-header actif">
+		<div class="conteneur-bo-header">
 			<a title="Mode édition" class="declencheurModale"><i class="fa-solid fa-pen-to-square"></i>Mode édition</a>
 		</div>
 		<div class="conteneur-header">
 			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 			<nav>
 				<ul>
-					<li>projets</li>
-					<li>contact</li>
-					<li><a href="./login.html" title="Connexion collaborateurs" rel="nofollow">login</a></li>
-					<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+					<li><a href="./index.html" title="Accueil">projets</a></li>
+					<li><a href="#contact" title="Contacter Sophie Bluel">contact</a></li>
+					<li id="lienConnexion"><a href="./login.html" title="Connexion collaborateurs" rel="nofollow">login</a></li>
+					<li><a href="#" title="Instagram de Sophie Bluel" rel="nofollow"><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
 				</ul>
 			</nav>	
 		</div>
 	</header>
 	<main>
-		<section id="introduction">
+		<section id="introduction" class="introduction">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
 			</figure>
@@ -94,7 +94,7 @@
 			<button class="croixFermerModale declencheurModale">
 				<i class="fa-solid fa-xmark declencheurModale"></i>	
 			</button>
-			<div class="pageModale pageModaleActive">
+			<div class="pageModale pageModale1">
 				<h3 class="titreModale">Galerie photo</h3>
 				<div class="interactifModale galeriePhotoModale">
 					<!-- <article>
@@ -104,39 +104,41 @@
 				</div>
 				<button class="btnAjoutPhoto declencheurPageModale">Ajouter une photo</button>
 			</div>
-			<div class="pageModale">
+			<div class="pageModale pageModale2">
 				<button class="flecheNaviguerModale declencheurPageModale">
 					<i class="fa-solid fa-arrow-left flecheP1Modale declencheurPageModale"></i>
 				</button>
-				<h3 class="titreModale">Ajout Photo</h3>
+				<div class="contenuPageModale2">
+					<h3 class="titreModale">Ajout Photo</h3>
 					<form method="post" action="#" id="formulaireAjout">
-					<div class="interactifModale ajoutPhotoModale">
-						<label for="ajoutImage">
-							<div class="conteneurAjoutImage">
-								<i class="fa-solid fa-image"></i>							
-								<div class="fauxBoutonAjoutPhoto">+ Ajouter photo</div>
-								<p class="indicationAjoutImage">jpg, png : 4mo max</p>
-								<div class="previsualiserImage">
-									<img src="" alt="Aperçu de l'image" id="apercuImage">
-								</div>							
-							</div>
-						</label>
-						<input type="file" name="ajoutImage" id="ajoutImage" class="cacherChamp">
-						<div class="conteneurChampsAjoutImage">
-							<label for="titreAjoutImage">Titre</label>
-							<input type="text" for="titreAjoutImage" id="titreAjoutImage" class="champFormulaire">
-							<label for="categorieAjoutImage">Catégorie</label>
-							<div class="conteneurMenuCatAjoutImg">
-								<select name="categorieAjoutImage" id="categorieAjoutImage" class="champFormulaire">
-									<option value="0"></option>
-								</select>	
-								<i class="fa-solid fa-chevron-down"></i>								
+						<div class="interactifModale ajoutPhotoModale">
+							<label for="ajoutImage">
+								<div class="conteneurAjoutImage">
+									<i class="fa-solid fa-image"></i>							
+									<div class="fauxBoutonAjoutPhoto">+ Ajouter photo</div>
+									<p class="indicationAjoutImage">jpg, png : 4mo max</p>
+									<div class="previsualiserImage">
+										<img src="" alt="Aperçu de l'image" id="apercuImage">
+									</div>							
+								</div>
+							</label>
+							<input type="file" name="ajoutImage" id="ajoutImage" class="cacherChamp">
+							<div class="conteneurChampsAjoutImage">
+								<label for="titreAjoutImage">Titre</label>
+								<input type="text" for="titreAjoutImage" id="titreAjoutImage" class="champFormulaire">
+								<label for="categorieAjoutImage">Catégorie</label>
+								<div class="conteneurMenuCatAjoutImg">
+									<select name="categorieAjoutImage" id="categorieAjoutImage" class="champFormulaire">
+										<option value="0"></option>
+									</select>	
+									<i class="fa-solid fa-chevron-down"></i>								
+								</div>
 							</div>
 						</div>
-					</div>
-					<p class="messageFormulaireAjout"></p>
-					<button class="btnValiderAjoutPhoto" type="submit" disabled>Valider</button>
-				</form>
+						<p class="messageFormulaireAjout"></p>
+						<button class="btnValiderAjoutPhoto" type="submit" disabled>Valider</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</aside>

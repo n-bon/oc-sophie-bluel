@@ -1,33 +1,33 @@
 
 /**************** Mise en forme du corpus de la page ****************/
 /** Bannière **/
-#introduction {
+.introduction {
 	display: flex;
 	align-items: center;
+	gap: 70px;
+	margin-top: 140px;
 }
-#introduction figure {
+.introduction figure {
 	flex: 1
 }
-#introduction img {
+.introduction img {
 	display: block;
-	margin: auto;
-	width: 80%;
+	width: 474px;
 }
 
-#introduction article {
+.introduction article {
 	flex: 1
 }
-#introduction h2 {
+.introduction h2 {
 	margin-bottom: 1em;
 }
 
-#introduction p {
+.introduction p {
 	margin-bottom: 0.5em;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 100%;
 	color: var(--soutien1);
-	max-width: 400px;
 }
 
 /** Section portfolio **/
@@ -58,6 +58,12 @@
 	min-width: 100px;
 }
 
+.filtres button:hover {
+	color: white;
+	background-color: var(--soutien2);
+}
+
+
 .filtreActif {
 	background-color: var(--contraste1);
 	color: var(--fond);
@@ -75,11 +81,12 @@
 
 .gallery img {
 	width: 100%;
-
+	height: 405px;
 }
 
 .gallery figcaption {
 	color: var(--soutien1);
+	margin-top: 7px;
 }
 
 /** Formulaires **/
@@ -140,7 +147,6 @@ margin: auto;
 
 #contact > * {
 	text-align: center;
-
 }
 
 #contact h2{

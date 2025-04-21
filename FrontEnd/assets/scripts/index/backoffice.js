@@ -8,33 +8,70 @@
 import { afficherTravaux, 
  } from "./portfolio.js";
 
-/** Affichage du bandeau noir et du bouton **/
+/** Affichage du bandeau noir, du bouton modifier et de log out **/
 export function afficherBackOffice() {
     let jetonSession = window.localStorage.getItem('jetonAuth')
 
-    //Comportement de la page selon que l'utilisateur soit caché ou non
+    //Comportement de la page selon que l'utilisateur soit connecté ou non
     if (jetonSession === null) {
         //Cacher bandeau noir
         let bandeauNoirHeader = document.querySelector(".conteneur-bo-header");
-        bandeauNoirHeader.classList.remove("actif");
+        bandeauNoirHeader.classList.remove("bandeauBOActif");
 
         //Cacher lien modifier
         let boutonModifierPortfolio = document.querySelector(".bouton-modifier");
-        boutonModifierPortfolio.classList.remove("actif");
+        boutonModifierPortfolio.classList.remove("boutonModifierActif");
 
     } else {
         //afficher bandeau noir
         let bandeauNoirHeader = document.querySelector(".conteneur-bo-header");
-        bandeauNoirHeader.classList.add("actif");
+        bandeauNoirHeader.classList.add("bandeauBOActif");
 
         //afficher lien modifier
         let boutonModifierPortfolio = document.querySelector(".bouton-modifier");
-        boutonModifierPortfolio.classList.add("actif");
+        boutonModifierPortfolio.classList.add("boutonModifierActif");
         
         //cacher boutons filtres
         let sectionFiltres = document.querySelector(".filtres");
         sectionFiltres.classList.add("cacherFiltres");
+
+        //Ajuster l'espace de l'introduction
+        let sectionIntro = document.querySelector(".introduction");
+        sectionIntro.classList.add("introductionMiniBO");
+
+        // gestion de la deconnexion
+        //selectionner l'item login et le changer en lien logout
+        let itemLogin = document.querySelector("#lienConnexion");
+        itemLogin.innerHTML = `<a href="#" title="Se déconnecter">logout</a>`;
+        //ecouter le clic sur logout
+        itemLogin.addEventListener("click", () => {
+            //supprimer le jeton d'authentification
+            window.localStorage.removeItem('jetonAuth');
+            //recharger la page d'accueil pour enlever les fonctionnalités backoffice
+            window.location = "./index.html";
+        });
     };
+};
+
+/** Effacer le formulaire d'ajout de projet **/
+//fonction appelée : après ajout d'un travail, quand on quitte la P2 de la modale, quand on ferme la modale
+
+function reinitialiserFormulaireAjoutTravail() {
+    //selection du formulaire et du message de sortie
+    const formulaire = document.querySelector("#formulaireAjout");
+    let messageSortie = document.querySelector(".messageFormulaireAjout");
+    //reset du formulaire
+    formulaire.reset();
+    //reset du bloc ajout image
+    const emplacementIndicationImage = document.querySelector(".indicationAjoutImage");
+    emplacementIndicationImage.innerHTML = `jpg, png : 4mo max`;
+    const blocApercu = document.querySelector(".previsualiserImage");
+    blocApercu.classList.remove("afficherApercuImage");
+    //vider le message output du formulaire
+    messageSortie.innerHTML=``;
+    //desactiver le bouton
+    let btnValiderFormulaire = document.querySelector(".btnValiderAjoutPhoto");
+    btnValiderFormulaire.disabled = true;
 };
 
 /** Affichage de la page modale **/
@@ -49,7 +86,13 @@ export function afficherModalePortfolio() {
     //Affichage de la modale au clic
     declencheursModale.forEach(declencheur => {
         declencheur.addEventListener("click", () => {
+            //enlever l'affichage de la modale
             asideModale.classList.toggle("actif");
+            //enlever l'affichage de la page 2, pour que s'affiche la page 1 à la réouverture
+            const pageModale2 = document.querySelector(".pageModale2");
+            pageModale2.classList.remove("pageModale2Active");
+            //reinitialiser le formulaire d'ajout
+            reinitialiserFormulaireAjoutTravail();
         });
     });
 };
@@ -59,20 +102,19 @@ export function changerPageModale() {
     //selection des boutons déclencheurs
     const declencheursPageModale = document.querySelectorAll(".declencheurPageModale");
     //selection des pages
-    const pagesModales = document.querySelectorAll(".pageModale");
-
+    const pageModale2 = document.querySelector(".pageModale2");
     //comportement au clic
     declencheursPageModale.forEach(declencheur => {
         declencheur.addEventListener("click", () => {
-            //Basculer de classe sur chaque page au clic
-            pagesModales.forEach(page => {
-                page.classList.toggle("pageModaleActive");
-            });
+            //Basculer de classe la page 2 au clic
+            pageModale2.classList.toggle("pageModale2Active");
+            //reinitialiser le formulaire
+            reinitialiserFormulaireAjoutTravail();
         });
     });
 };
-//Mise à jour des travaux suite aux modifications dans le back office
 
+//Mise à jour des travaux suite aux modifications dans le back office
 async function mettreAJourTravaux () {
     //charger la nouvelle liste de travaux depuis l'API
     const travauxAJour = await fetch("http://localhost:5678/api/works").then(travauxAJour => travauxAJour.json());
@@ -82,7 +124,7 @@ async function mettreAJourTravaux () {
     afficherSupprimerProjet(travauxAJour);
     //refaire la boucle d'écoute du clic pour supprimer
     supprimerUnTravail();
-}
+};
 
 /** Gestion de la gallerie de suppression des projets **/
 //Afficher la collection de projets à supprimer
@@ -92,7 +134,6 @@ export async function afficherSupprimerProjet(travaux) {
     emplacementCartes.innerHTML = ``;
 
     //boucle de création pour chaque projet
-
     for (let i = 0; i < travaux.length; i++ ) {
         //creation de l'article
         let carte = document.createElement("article");
@@ -115,7 +156,6 @@ export async function afficherSupprimerProjet(travaux) {
 };
 
 //Envoi de la requête API Delete pour supprimer un projet
-
 async function envoyerSuppressionTravail(projet) {
     //selection du jeton d'authentification
     let token = window.localStorage.getItem("jetonAuth");
@@ -125,9 +165,7 @@ async function envoyerSuppressionTravail(projet) {
             method: "DELETE",
             headers: {"Authorization": `Bearer ${token}`}
         });
-        console.log(reponse.status);
         if (reponse.ok) {
-            console.log("supprimé avec succès");
             //Recharger travaux
             mettreAJourTravaux();
         }
@@ -135,7 +173,7 @@ async function envoyerSuppressionTravail(projet) {
         console.log(error);
         console.log(reponse.status);
     }
-}
+};
 
 //Fonctionnalité suppression d'un travail
 export async function supprimerUnTravail() {
@@ -150,10 +188,9 @@ export async function supprimerUnTravail() {
             envoyerSuppressionTravail(idProjetASupprimer);
         });
     });
-}
+};
 
 /** Gestion du formulaire d'ajout de projets **/
-
 //Afficher les catégories de façon dynamique dans le formulaire d'ajout de projet
 export async function afficherCategoriesAjoutImage (categories) {
     //selectionner le menu déroulant
@@ -182,7 +219,7 @@ function verifierImageFormulaireAjout(inputImage) {
         const emplacementMessageFichier = document.querySelector(".indicationAjoutImage");
         const fichier = event.target.files[0];
         if (!fichier) {
-            emplacementMessageFichier.textContent = "veuillez charger une image : format jpg ou png, 4mo max";
+            emplacementMessageFichier.innerHTML= `<span class="alerteErreur">veuillez charger une image : format jpg ou png, 4mo max</span>`;
             return;
         }
         //Exprimer les règles de validation du fichier 
@@ -191,11 +228,11 @@ function verifierImageFormulaireAjout(inputImage) {
         const tailleMaxAutoriseEnBytes = 4*1024*1024;
         //Verifier le format de l'image
         if (!formatsAutorises.includes(fichier.type)) {
-            emplacementMessageFichier.innerText = "format invalide, jpg ou png seulement";
+            emplacementMessageFichier.innerHTML = `<span class="alerteErreur">format invalide, jpg ou png seulement</span>`;
             return;
         }
         if (fichier.size > tailleMaxAutoriseEnBytes) {
-            emplacementMessageFichier.innerText = "fichier trop lourd, 4mo maximum";
+            emplacementMessageFichier.innerHTML = `<span class="alerteErreur">fichier trop lourd, 4mo maximum</span>`;
             return;
         }
         //Si tous les tests validés, indiquer chargr la miniature
@@ -211,7 +248,6 @@ function verifierImageFormulaireAjout(inputImage) {
 };
 
 //Validation du formulaire d'ajout et déblocage du bouton
-
 async function validationFormulaireAjoutTravail(formulaireAjout) {
     //placer les validations dans écouteur change du formulaire
     formulaireAjout.addEventListener("change", () => {
@@ -279,27 +315,18 @@ async function envoyerAjoutTravail(formulaireAjout) {
               headers: {"Authorization": `Bearer ${token}`},
               body: chargeUtile
            });
-           console.log(reponse.status);
            if (reponse.ok) {
               //---comportement en cas de succès
               //effacer le formulaire
-              formulaireAjout.reset();
-              //remise à zero du bloc image du formulaire
-              const emplacementIndicationImage = document.querySelector(".indicationAjoutImage");
-              emplacementIndicationImage.innerText = "jpg, png : 4mo max";
-              const blocApercu = document.querySelector(".previsualiserImage");
-              blocApercu.classList.remove("afficherApercuImage");
+              reinitialiserFormulaireAjoutTravail();
               //charger la nouvelle liste de travaux depuis l'API
               mettreAJourTravaux();
-              messageSortie.innerText = "projet ajouté à la gallerie avec succès"
-           } else {
-              messageSortie.innerText = "échec de l'envoi, tous les champs doivent être renseignés"
-           }
+           } else {}
         } catch (error) {
-            messageSortie.innerText = "échec de l'envoi, impossible de se connecter au serveur"
+            messageSortie.innerHTML = `<span class="alerteErreur">impossible de se connecter au serveur, réessayez plus tard</span>`
         };
      });
-}
+};
 
 //Gestion de l'envoi du formulaire d'ajout de projet
 export async function ajouterUnTravail() {

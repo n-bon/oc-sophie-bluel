@@ -18,8 +18,12 @@
 }
 
 /* Ajuster l'espacement */
-.actif + .conteneur-header {
+.bandeauBOActif + .conteneur-header {
 	margin-top: 100px;
+}
+
+.introductionMiniBO {
+    margin-top: 90px;
 }
 
 /*** Comportement de la section portfolio lorsque le collaborateur est connecté ***/
@@ -30,7 +34,7 @@
 }
 
 .bouton-modifier {
-	visibility: hidden;
+	display: none;
 	flex-direction: row;
 	align-items: center;
 }
@@ -54,6 +58,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 
 /** Fenêtre blanche **/
@@ -94,8 +99,20 @@
 }
 
 .pageModale {
-    display: none;
     background-color: white;
+}
+
+.pageModale2 {
+    display: none;
+}
+
+.contenuPageModale2 {
+    background-color: white;
+    width: 420px;
+    height: 620px;
+    position: absolute;
+    top: var(--espaceDefaut);
+    left: 105px;
 }
 
 /** Elements communs aux deux vues modales **/
@@ -142,6 +159,7 @@
 .galeriePhotoModale img {
     object-fit: cover;
     width: 100%;
+    height: 100px;
 }
 
 .boutonSupprimerProjet {
@@ -301,10 +319,25 @@
 }
 
 /*** Déclencheurs d'affichage pour l'interaction avec JS ***/
+.pageModale2Active {
+    display: contents;
+}
+
 .actif {
+    visibility: visible;
+}
+
+.bandeauBOActif {
 	visibility: visible;
 }
 
-.pageModaleActive {
-    display: contents;
+.boutonModifierActif {
+    display: flex;
+}
+
+/*** Gestion des erreurs ***/
+
+.alerteErreur {
+    color: red;
+    font-weight: 800;
 }

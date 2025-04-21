@@ -2,7 +2,6 @@
 
 //Gestion des erreurs de login
 async function afficherMessageErreurLogin () {
-    console.log("fonction lancée")
     //Selection de l'emplacement du message d'erreur
     const emplacementMessageErreur = document.querySelector("#formulaire-connexion");
     //Création de l'élément HTML
@@ -10,7 +9,6 @@ async function afficherMessageErreurLogin () {
     //Contenu de l'élément HTML
     messageErreur.classList.add("messageErreur");
     messageErreur.innerText = "Erreur dans l’identifiant ou le mot de passe";
-    console.log(messageErreur)
     //Placer l'élément HTML
     emplacementMessageErreur.appendChild(messageErreur);
 };

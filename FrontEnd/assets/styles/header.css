@@ -1,26 +1,27 @@
 /***************** Menu en-tête de la page *************************/
 .conteneur-header {
-	max-width: var(--largeurMaxOrdi);
+	max-width: 1140px;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	margin: var(--espaceDefaut) auto;
+	margin: var(--espaceDefaut) auto ;
 }
 
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
+	gap: 44px;
 }
 
 nav li {
-	padding: 0 10px;
+	padding: 0px;
 	font-size: 1.2em;
 }
 
 nav a {
 	color: black;
+	font-weight: 400;
 }
 
 nav img {
@@ -31,7 +32,7 @@ nav img {
 }
 
 nav a:hover {
-	color: var(--contraste2);
+	font-weight: 600;
 }
 
 .pageMenuActive {
